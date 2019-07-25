@@ -1,0 +1,61 @@
+.avatar{
+    width: 185px;
+    height: 220px;
+    border: 2px solid #fb99ae;
+    border-radius: 5px;
+    position: relative;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.upload_btn{
+    margin: 20px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 200px;
+    height: 40px;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+}
+.upload_btn:hover{
+    color: #fff;
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.upload_notify{
+    color: red;
+}
+#upload_input{
+    display: none;
+}
+.verified{
+    background-image: url('../../../../../assets/img/verified.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    text-align: center;
+    height: 50px;
+    position: absolute;
+    bottom: 28px;
+    right: -35px;
+    left: -33px;
+    color: #fff;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    padding-top: 20px
+}
+.featured{
+    background-image: url('../../../../../assets/img/featured.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    text-align: center;
+    height: 50px;
+    position: absolute;
+    bottom: -5px;
+    right: -35px;
+    left: -33px;
+    color: #fff;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    padding-top: 20px;
+}

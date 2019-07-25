@@ -1,0 +1,216 @@
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,300,700');
+@font-face {
+    font-family: Myriad Pro;
+    src: url(../../../assets/font/MyriadPro-Light.otf);
+}
+@font-face {
+    font-family: Myriad Pro_Bold;
+    src: url(../../../assets/font/MyriadPro-Bold.otf);
+}
+
+.main{
+    min-width: 430px !important;
+}
+.nav-bar{
+    box-shadow: none !important;
+}
+.nav-parent{
+    z-index: 999;
+    position: fixed;
+    left: 0px;
+    right: 0;
+    top: 0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+}
+.main-container{
+    margin-top: 170px;
+}
+.space{
+    height:  40px;
+    width: 100%;
+    background-color: #ffffff;
+}
+.info{
+    background-color: #f84f73;
+    height: 70px;
+}
+.logo{
+    margin-top: 3px;
+    margin-left: 35px;
+    height: 100%;
+    padding: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.states_bar{
+    text-align: center;
+    height:  70px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+}
+.navbar{
+ display: inline-block;
+ margin-top: 10px;
+ box-shadow: none;
+}
+@media (max-width: 1000px) {
+    #statebarNav{
+        position: absolute;
+        z-index: 999;
+    }
+}
+.states_label{
+    font-family: 'Myriad Pro_bold';
+	font-size: 18px;
+    left: 5px;
+    color: #f84f73 !important;
+    margin-right: 33px;
+    cursor: default;
+}
+.nav-item{
+    font-family: 'Myriad Pro_bold';
+	font-size: 20px;
+    left: 0px;
+    color: #f84f73 !important;
+}
+.active{
+    color: #ffffff !important;
+    background-color: #f84f73 !important;
+}
+
+@media (max-width: 1000px) {
+    .states_label{
+        float: left;
+        margin-left: 20px;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+    .set_default{
+        float: right;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+    .navbar{
+        float: left;
+        margin-left: 25px;
+    }
+    .navbar-nav{
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+.set_default{
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 120px;
+    height: 45px;
+    font-family: 'Myriad Pro';
+    font-size: 13pt;
+    border-radius: 35px 35px;
+    margin-left: 33px;
+}
+.set_default:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.userinfo{
+    width: 45px;
+    height: 45px;
+    margin-top: 12px;
+    margin-right: 35px;
+    float: right;
+    background-image: url('../../../assets/img/avatar.png');
+    background-repeat: no-repeat;
+    background-size: 45px;
+    cursor: pointer;
+}
+.username{
+    font-family: 'Myriad Pro';
+	font-size: 20px;
+    left: 0px;
+    color: #ffffff !important;
+    float: right;
+    margin-top: 23px;
+    margin-right: 30px;
+}
+.missed_msg_size{
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+    margin-right: -11px;
+    text-align: center;
+    float: right;
+    background-color: #ffffff;
+    font-family: 'Myriad Pro';
+	font-size: 15px;
+    left: 0px;
+    color: #f84f73 !important;    
+}
+.pc-container{
+    margin-top: 45px;
+    margin-bottom: 140px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.home-sub-container{
+    margin-top: 45px;
+    margin-bottom: 140px;
+}
+
+.home-container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1200px){
+    .home-container {
+        max-width: 1485px;
+    }
+}
+@media (min-width: 992px){
+    .home-container {
+        max-width: 1300px;
+    }
+}
+::ng-deep.mat-progress-bar-fill::after {
+    background-color: #f84f73;
+}
+/* loading dots */
+
+.loading{
+    color: #f84f73;
+    text-align: center;
+    font-size: 30px;
+    padding: 194px;
+    font-family: 'Myriad Pro_bold';
+}
+
+.loading:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;}
+  
+  @keyframes dots {
+    0%, 20% {
+      color: #f84f73;
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    40% {
+      color: #f84f73;
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    60% {   
+      text-shadow:
+        .25em 0 0 #f84f73,
+        .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 #f84f73,
+        .5em 0 0 #f84f73;}}

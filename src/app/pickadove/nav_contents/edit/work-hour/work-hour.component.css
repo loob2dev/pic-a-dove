@@ -1,0 +1,39 @@
+.title{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    margin-top: 20px;
+}
+.plus_button{
+    text-align: center;
+    color: #249042;
+    padding-top: 1px;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 29px;
+}
+.plus_button:hover{
+    color: #207538;
+}
+mat-select{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+}
+.day_week{
+    width: 23%;
+}
+.hour{
+    width: 18%;
+    border-bottom: 1px solid;
+}
+.format{
+    width: 18%;
+}
+.to{
+    font-family: 'Myriad Pro_bold';
+    font-size: 11pt;
+    margin: 0px 5px;
+}
+.frame{
+    margin: 15px 0px;
+}

@@ -1,0 +1,31 @@
+
+<div class="gallery-c row">
+    <div class="col-lg-5th-1 col-xs-5th-2" *ngFor="let advertiser of profiles">
+        <div class="gallery-card" [attr.id]="advertiser.id_user">
+            <p [ngClass]="{'excellent-top' : advertiser.top, 'advertiser' : !advertiser.top}">{{advertiser.firstname + " " + advertiser.lastname}}</p>
+            <p class="marker-c"><i class="fa fa-map-marker marker-i" aria-hidden="true"></i>{{advertiser.address}}</p>
+            <p class="status-c"><i class="fa fa-circle status-i" aria-hidden="true"></i>online</p>
+            <div class="text-center avatar-container">
+                <img class="avatar" [src]="'http://192.168.1.140:4000/' + advertiser.imgurl" (click)="selectAd(advertiser.id_user)">
+                <img class="verfied-ad" src="../../../../assets/img/gallery-verified.png" *ngIf="advertiser.isVerified">
+                <img class="featured-ad" src="../../../../assets/img/gallery-featured.png" *ngIf="advertiser.isFeatured">
+            </div>
+            <div class="d-flex justify-content-start mark-gallery">
+                <p class="cost-c"><i class="fa fa-dollar cost-i"></i>400</p>
+                <p class="heart-c"><i class="fa fa-heart heart-i" aria-hidden="true"></i>{{advertiser.comments}}</p>
+                <p class="heart-broken-c"><i class="fa fa-heartbeat heart-broken-i" aria-hidden="true"></i>{{advertiser.complaints}}</p>
+            </div>
+            <div class="container">
+                <div class="d-flex justify-content-between match">
+                    <p class="label-gallery">Age</p>
+                    <p class="content-gallery">{{advertiser.age}}</p>
+                </div>
+                <div class="d-flex justify-content-between match">
+                    <p class="label-gallery">Height</p>
+                    <p class="content-gallery">{{advertiser.height}}</p>
+                </div>
+            </div>
+            <div class="excellent-bottom" *ngIf="advertiser.top"></div>
+        </div>
+    </div>
+</div>

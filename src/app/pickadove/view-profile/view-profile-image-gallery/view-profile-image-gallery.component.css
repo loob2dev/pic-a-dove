@@ -1,0 +1,53 @@
+.title-header{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #f84f73;
+    padding: 13px;
+}
+.title{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    color: white;
+}
+.gallery{
+    margin : 20px;
+}
+.img-card{
+    padding-top: 10px;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 255px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.avatar{
+    width: 160px;
+    height: 200px;
+    border: 2px solid #fb99ae;
+    border-radius: 5px;
+    position: relative;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.lock{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+}
+.check{
+    position: absolute;
+    bottom: -15px;
+    left: -3px;
+    color: #fff;
+}
+.review{
+    width: 30px;
+    height: 30px;
+    margin-top: -2px;
+}
+.lock-check{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    float: left;
+}

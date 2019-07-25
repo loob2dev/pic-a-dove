@@ -1,0 +1,25 @@
+<div class="text-center, container">
+    <div *ngIf="error" class="alert alert-warning">
+        <div>{{error}}</div>
+    </div>
+    <div *ngIf="success" class="alert alert-success">
+        <div>{{success}}</div>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onChangeName()">
+        <mat-form-field class="m-3">
+            <input type="text" formControlName="firstname" matInput placeholder="First Name*" [(value)]="data.firstname"/>
+            <mat-error *ngIf="isRegisterd && f_up.firstname.errors" class="invalid-feedback">
+                <mat-error *ngIf="f_up.firstname.errors.required">required</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-3">
+            <input type="text" formControlName="lastname" matInput placeholder="Last Name*" [(value)]="data.lastname"/>
+            <mat-error *ngIf="isRegisterd && f_up.lastname.errors" class="invalid-feedback">
+                <mat-error *ngIf="f_up.lastname.errors.required">required</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <div class="form-group text-center">
+            <button mat-button mat-raised-button class="register_btn">Change</button>
+        </div>
+    </form>
+</div>

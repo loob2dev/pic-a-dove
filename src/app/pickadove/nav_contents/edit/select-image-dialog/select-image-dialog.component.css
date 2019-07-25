@@ -1,0 +1,38 @@
+.upload_dlg{
+    width: 500px;
+    position: relative;
+}
+p{
+    font-family: 'Myriad Pro';
+    font-size: 20pt;
+    color: #f84f73;
+}
+.upload_btn{
+    margin:20px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    font-family: 'Myriad Pro';
+    font-size: 15pt;
+}
+.upload_btn:hover{
+    color: #fff;
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.upload_notify{
+    color: red;
+}
+#upload_input{
+    display: none;
+}
+.close-buton{
+    font-size: 18pt;
+    right: -12px;
+    top: -16px;
+    position: absolute;
+    cursor: pointer;
+}
+.close-buton:hover{
+    color: #f84f73;
+}

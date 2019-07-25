@@ -1,0 +1,11 @@
+<div class="text-center">
+    <div class="avatar" height="200" [ngStyle]="{'background-image': 'url(' + data.croppedImage + ')'}" *ngIf="userinfo">
+        <div class="featured" *ngIf="userinfo.isFeatured">FEATURED</div>
+        <div class="verified" *ngIf="userinfo.isVerified">VERIFIED</div>
+    </div>
+    <!-- <div class="text-center">
+        <div class="verified">FEATURED</div>
+        <img class="featured" src="../../../../assets/img/featured.png">
+    </div> -->
+    <button mat-button mat-raised-button class="upload_btn" (click)="selectImage()">Change Profile Picture</button>
+</div>

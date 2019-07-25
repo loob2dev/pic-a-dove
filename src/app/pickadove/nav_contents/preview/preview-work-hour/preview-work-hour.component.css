@@ -1,0 +1,27 @@
+.title{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    margin-top: 20px;
+}
+.to{
+    font-family: 'Myriad Pro_bold';
+    font-size: 11pt;
+    margin: 0px 20px;
+}
+.day{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    margin: 0px 5px;
+    width: 25px
+}
+.type{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    width: 15px
+}
+.hour{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    margin: 0px 2px 0px 5px;
+    width: 15px
+}

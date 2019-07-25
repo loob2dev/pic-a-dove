@@ -1,0 +1,35 @@
+<div class="container">
+        <div class="row conatainer p-5" *ngFor="let comment of comments">
+            <img class="col-md-1 avatar" src="../../../../../../assets/img/persion.png">
+            <div class="col-md-8 chat-container">
+                <p class="nick-name">{{comment.nickName}}</p>
+                <p class="time">10-05-19 05:30PM</p>
+                <p class="chat-content">{{comment.content}}</p>
+            </div>
+        </div>
+        <div class="row conatainer p-5">
+            <div class="col-md-1">
+                <img class="avatar" src="../../../../../../assets/img/persion.png">
+            </div>
+            <div class="col-md-10">
+                <form [formGroup]="submitForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <input type="text" formControlName="nickName" placeholder="Nick Name*" class="form-control nickname-input" [ngClass]="{ 'is-invalid': submit && f.nickName.errors }" />
+                        <div *ngIf="submit && f.nickName.errors" class="invalid-feedback">
+                            <div *ngIf="f.nickName.errors.required">Nick Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" type="text" formControlName="content" placeholder="content*" class="form-control chat-contnet-input" [ngClass]="{ 'is-invalid': submit && f.content.errors }"></textarea>
+                        <div *ngIf="submit && f.content.errors" class="invalid-feedback">
+                            <div *ngIf="f.content.errors.required">Comment is required</div>
+                        </div>
+                    </div>
+                    <emoji-mart [style]="{ width: '100%'}" (emojiClick)="addEmoji($event)"></emoji-mart>
+                    <div class="form-group text-right">
+                        <button  mat-button mat-raised-button class="submit_btn">Submit</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>

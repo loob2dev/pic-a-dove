@@ -1,0 +1,6 @@
+<div class="service">
+    <p class="title">Service Selection</p>
+</div>
+<div class="row text-center">
+    <mat-checkbox class="service-item col-md-1" *ngFor="let service of services; let i = index" [(ngModel)] = "service.value" (change)="click({index: i, val: $event.checked})">{{service.label}}</mat-checkbox>
+</div>

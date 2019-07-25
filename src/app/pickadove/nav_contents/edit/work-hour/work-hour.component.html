@@ -1,0 +1,25 @@
+<div class="container text-center">
+    <p class="title">WORK HOURS</p>
+        
+    <div class="d-flex justify-content-center frame" *ngFor="let schedule of workSchedule" [attr.id]="schedule.id_workhours">
+        <mat-select class="day_week" [(value)]="schedule.w_day">
+            <mat-option *ngFor="let day of week" [value]="day.id">{{day.name}}</mat-option>
+        </mat-select>
+        <mat-select class="hour" [(value)]="schedule.w_from">
+            <mat-option *ngFor="let time of hour" [value]="time.id">{{time.name}}</mat-option>
+        </mat-select>
+        <mat-select class="format" [(value)]="schedule.isPmFrom">
+            <mat-option *ngFor="let format of timeFormat" [value]="format.id">{{format.name}}</mat-option>
+        </mat-select>
+        <p class="to">TO</p>
+        <mat-select class="hour" [(value)]="schedule.w_to">
+            <mat-option *ngFor="let time of hour" [value]="time.id">{{time.name}}</mat-option>
+        </mat-select>
+        <mat-select class="format" [(value)]="schedule.isPmTo">
+            <mat-option *ngFor="let format of timeFormat" [value]="format.id">{{format.name}}</mat-option>
+        </mat-select>
+    </div>
+    <div class="text-right">
+        <div class="plus_button rounded-circle" (click)="addHour()"><i class="fa fa-plus-circle"></i></div> 
+    </div>
+</div>

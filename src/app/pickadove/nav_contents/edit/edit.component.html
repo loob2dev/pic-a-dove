@@ -1,0 +1,20 @@
+<div class="row edit_container">
+    <div class="col-lg-4 col-sm-12 col-xs-12">
+        <app-avatar-upload [userinfo]="details_data"></app-avatar-upload>
+        <app-work-hour [workSchedule]="workHours"></app-work-hour>
+    </div>
+    <div class="col-lg-8 col-sm-12 col-xs-12">
+        <app-change-info [userinfo]="details"></app-change-info>
+        <app-edit-info [fields]="adminFields" [userinfo]="details_data"></app-edit-info>
+    </div>
+    <div class="container text-right">
+        <button mat-button class="save_btn" (click)="completeProfile()">Save</button>
+    </div>
+    <app-service-selection class=container></app-service-selection>
+    <app-about-me class=container></app-about-me>
+    <div class="d-flex justify-content-between container">
+        <button mat-button class="save_btn">Add Video</button>
+        <button mat-button class="save_btn">Save</button>
+    </div>
+    <app-photo-gallery class=container></app-photo-gallery>
+</div>

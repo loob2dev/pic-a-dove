@@ -1,0 +1,13 @@
+<div class="text-center, container">
+    <form [formGroup]="registerForm" (ngSubmit)="onChangeEmail()">
+        <mat-form-field>
+            <input type="text" formControlName="email"  placeholder="email*" matInput [(value)]="data.email"/>
+            <mat-error *ngIf="isRegisterd && f_up.email.errors" class="invalid-feedback">
+                <mat-error *ngIf="f_up.email.errors.required">Password is required</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <div class="form-group text-center">
+            <button mat-button mat-raised-button class="register_btn">Change</button>
+        </div>
+    </form>
+</div>

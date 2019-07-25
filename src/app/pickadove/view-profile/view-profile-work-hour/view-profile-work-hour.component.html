@@ -1,0 +1,13 @@
+<div class="container text-center">
+    <p class="title">WORK HOURS</p>
+    <div *ngIf="userInfo">
+        <div class="d-flex justify-content-center frame" *ngFor="let hour of userInfo.workhours">
+            <p class="day">{{hour.w_day}}</p>
+            <p class="hour">{{hour.w_from}}</p>
+            <p class="type">{{hour.isPmFrom}}</p>
+            <p class="to">To</p>
+            <p class="hour">{{hour.w_to}}</p>
+            <p class="type">{{hour.isPmTo}}</p>
+        </div>
+    </div>
+</div>

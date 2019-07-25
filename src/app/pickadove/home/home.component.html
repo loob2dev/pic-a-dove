@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-2 col-sm-12 col-xs-12">
+        <app-home-lock></app-home-lock>
+        <app-home-recent-profiles [profiles]="historyResult"></app-home-recent-profiles>
+    </div>
+    <div class="col-md-10 col-sm-12 col-xs-12">
+        <div class="conatiner" *ngIf="!showAD">
+            <div class="card">
+                <app-home-search-here [fields]="searchFields"></app-home-search-here>
+                <div class="container text-right">
+                    <button mat-button class="search_btn" (click)="search()">Search</button>
+                </div>
+            </div>
+            <app-home-report></app-home-report>
+            <app-home-top-profile class="card" [result]="searchResult"></app-home-top-profile>
+            <app-home-gallery [profiles]="profilesResult"></app-home-gallery>
+        </div>
+        <div class="conatiner" *ngIf="showAD">
+            <app-view-profile class="card"></app-view-profile>
+        </div>
+    </div>
+</div>

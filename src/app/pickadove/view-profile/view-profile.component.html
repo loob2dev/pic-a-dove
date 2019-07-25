@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row view_container">
+        <div class="col-lg-4 col-sm-12 col-xs-12">
+            <app-view-profile-avatar [userInfo]="details"></app-view-profile-avatar>
+            <app-view-profile-work-hour  [userInfo]="details"></app-view-profile-work-hour>
+        </div>
+        <div class="col-lg-8 col-sm-12 col-xs-12">
+            <app-view-profile-persional-info  [userInfo]="details"></app-view-profile-persional-info>
+        </div>
+        <app-view-profile-profile-details class=container></app-view-profile-profile-details>
+        <app-view-profile-image-gallery class=container></app-view-profile-image-gallery>
+        <app-view-profile-comments class=container></app-view-profile-comments>
+    </div>
+</div>

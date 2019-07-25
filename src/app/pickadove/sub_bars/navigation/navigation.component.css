@@ -1,0 +1,32 @@
+.naviagtion{
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    background-color: #f84f73;
+    margin-top: 20px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.navbar{
+   display: inline-block;
+   margin-top: 10px;
+   background-color: #f84f73 !important;
+   box-shadow: none !important;
+}
+.active{
+   color: #f84f73 !important;
+   background-color: #ffffff !important;
+}
+.nav_btn{
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 150px;
+    height: 45px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 15pt;
+}
+.nav_btn:hover{
+    color: #fff;
+    background-color: #f97894;
+    border-color: #f97894;
+}

@@ -1,0 +1,80 @@
+.edit{
+    margin-right: 15%;
+    margin-top: 30px;
+}
+p{
+    font-family: 'Myriad Pro_bold';
+}
+.label{
+    margin-top: 26px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+}
+.whatsapp{
+    margin-top: 10px;
+    width: 68px;
+    height: 68px;
+    background: url("../../../../../assets/img/watsapp.png") no-repeat;
+    display: inline-block;
+}
+.wechat{
+    margin-top: 10px;
+    width: 68px;
+    height: 68px;
+    background: url("../../../../../assets/img/wechat.png") no-repeat;
+    display: inline-block;
+}
+.othercontact-i{
+    font-size: 35pt;
+    color: #249042;
+    margin: 8px 12px;
+}
+.mat-icon{
+    font-size: 100% !important;
+}
+.damage-l{
+    text-transform: capitalize;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    float: left;
+    margin-left: 20px
+
+}
+.damage-c{
+    text-transform: capitalize;
+    font-family: 'Myriad Pro_bold';
+    font-size: 13pt;
+    float: right;
+}
+.contact-info{
+    text-transform: uppercase;
+    font-family: 'Myriad Pro_bold';
+    font-size: 15pt;
+    margin-top: 20px;
+}
+.phone-i{
+    font-size: 30pt;
+    margin-top: 40px;
+    margin-right: 5px;
+    color: #dd292b;
+    cursor: pointer;
+}
+
+.others-contact{
+    font-family: 'Myriad Pro_bold';
+    font-size: 14pt;    
+    padding: 10px;
+    margin-top: 10px;
+}
+.others-contact-c{
+    margin-left: -30px;
+    margin-top: -25px;
+}
+.othercontact-i{
+    font-size: 25pt;
+    color: #249042;
+    margin: 8px 12px;
+}
+.phone{
+    margin-top: 20px;
+}

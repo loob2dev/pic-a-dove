@@ -1,0 +1,13 @@
+<p class="recent-title">Recent Profiles</p>
+<div class="recent-card" *ngFor="let advertiser of profiles">
+    <p class="advertiser">{{advertiser.firstname + " " + advertiser.lastname}}</p>
+    <p class="marker-c"><i class="fa fa-map-marker marker-i" aria-hidden="true"></i></p>
+    <p class="status-c"><i class="fa fa-circle status-i" aria-hidden="true"></i>Message Me</p>
+    <div class="text-center avatar-container">
+        <img class="avatar" [src]="'http://192.168.1.140:4000/' +  advertiser.imgurl" (click)="selectAd(advertiser.id_user)">
+    </div>
+    <div class="d-flex justify-content-between match">
+        <p class="label-recent">Age</p>
+        <p class="content-recent">{{advertiser.age}}</p>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="title-header">
+    <p class="title">Profile Details</p>
+</div>
+<div class="container" *ngIf="userInfo">
+    <p class="sub-title">My Service</p>
+    <div class="container row">
+        <p class="service-item col-md-3" *ngFor="let service of userInfo.services"><i class="fa fa-check p-2"></i>{{service.name}}</p>
+    </div>
+    <p class="sub-title">About me</p>
+    <p class="about-me">{{data.about_me}}</p>
+</div>

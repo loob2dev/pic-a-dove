@@ -1,0 +1,58 @@
+<div class="main">
+    <nav class="nav-parent">
+        <div class="space"></div>
+        <div class="info">
+            <img class="logo" src="../assets/img/logo.png" (click)="openHome()">
+            <div class="pull-right rounded-circle userinfo" [ngStyle]="{'background-image': 'url(' + imsUrl + ')'}" [matMenuTriggerFor]="menu">
+                <div class="missed_msg_size rounded-circle">
+                    <span>1</span>
+                </div>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openView()">Profile</button>
+                    <button mat-menu-item (click)="logout()">Logout</button>
+                    <!-- <button mat-menu-item (click)="openEdit()">Profile Edit</button>
+                    <button mat-menu-item (click)="openPaymentView()">Payment</button> -->
+                </mat-menu>
+            </div>
+            <p class="username">{{username}}</p>
+        </div>
+        <div class="states_bar" *ngIf="home">
+             <a class="states_label">STATES</a>
+             <nav class="navbar navbar-expand-lg navbar-light">
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#statebarNav"
+                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+    
+                 <div class="collapse navbar-collapse" id="statebarNav">
+                     <ul class="navbar-nav">
+                         <button mat-button (click)="selectState(state.id)" *ngFor="let state of states" class="nav-item" [attr.id]="state.id">{{state.name}}</button>
+                     </ul>
+                 </div>
+    
+             </nav>
+             <button mat-button class="set_default">Set Default</button>
+        </div>
+        <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    </nav>
+    <div class="main-container">
+        <div class="container" *ngIf="!home">
+            <app-live [live]="live" (liveStatus)="changeLiveStatus($event)"></app-live>
+            <app-navigation (selection)="onSelect($event)"></app-navigation>
+            <app-live-status *ngIf="live"></app-live-status>
+            <div class="container pc-container" *ngIf="progress">
+                <div class="loading">Loading</div>
+            </div>
+            <div class="container pc-container">
+                <app-preview *ngIf="contents.nav0" @fade></app-preview>
+                <app-edit *ngIf="contents.nav1" @fade></app-edit>
+                <app-payment *ngIf="contents.nav2" @fade></app-payment>
+            </div>
+        </div>
+        <div class="home-container" *ngIf="home">
+            <div class="home-sub-container">
+                <app-home [state]="currentState"></app-home>
+            </div>
+        </div>
+    </div>
+</div>

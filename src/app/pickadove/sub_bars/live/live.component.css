@@ -1,0 +1,57 @@
+.live{
+    margin-top: 40px;
+}
+.header{
+    font-family: 'Myriad Pro_bold';
+    font-size: 20px;
+    cursor: default;
+}
+.plus_button{
+    color: #249042;
+    width:25px;
+    height: 25px;
+    text-align: center;
+    padding-top: 1px;
+    font-size: 29px;
+    cursor: pointer;
+    margin-top: -5px;
+}
+.plus_button:hover{
+    color: #207538;
+}
+.blue_link{
+    margin: 0px 10px;
+    color: #249042;
+    font-family: 'Myriad Pro_bold';
+    cursor: pointer;
+    text-decoration: underline;
+}
+.blue_link:hover{
+    color: #207538;
+}
+.devide{
+    color: #249042;
+    font-family: 'Myriad Pro_bold';
+    cursor: default;
+}
+.right{
+    text-align: right;
+}
+.pull-right{
+    margin-right: -24px;
+}
+.live_btn{
+    margin-top: 25px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 150px;
+    height: 45px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 15pt;
+}
+.live_btn:hover{
+    color: #fff;
+    background-color: #c74964;
+    border-color: #c74964;
+}

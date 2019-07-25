@@ -1,0 +1,49 @@
+.avatar{
+    width: 45px;
+    height: 45px;
+}
+.chat-container{
+    padding: 7px 29px;
+    background-color: #f1f1f1;
+    border-radius: 36px;
+}
+.nick-name{
+    font-family: 'Myriad Pro_bold';
+    font-size: 13pt;
+    margin: 0;
+}
+.time{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    margin: 0;
+}
+.chat-content{
+    margin-top: 5px;
+    font-family: 'Myriad Pro';
+    font-size: 15pt;
+    margin-bottom: 0;
+}
+.nickname-input{
+    width: 35%;
+    background-color: #f1f1f1;
+}
+.chat-contnet-input{
+    background-color: #f1f1f1;
+    resize: none;
+}
+.submit_btn{
+    margin-top: 50px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 160px;
+    height: 40px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    border-radius: 35px 35px;
+    margin-left: 33px;
+}
+.submit_btn:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}

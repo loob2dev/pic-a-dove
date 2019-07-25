@@ -1,0 +1,111 @@
+<div class="sign-container container text-center">
+    <ul class="nav nav-tabs sign-card">
+        <li class="nav-item nav-tab">
+          <a [ngClass]="{'nav-link' : true, 'active': isSignin}" (click)="isSignin = true">Signin</a>
+        </li>
+        <li class="nav-item nav-tab">
+          <a [ngClass]="{'nav-link' : true, 'active': !isSignin}" (click)="isSignin = false">SignUp</a>
+        </li>
+    </ul>
+    <div class="nav-content">
+        <div *ngIf="isSignin">
+            <div *ngIf="signin_error" class="alert alert-warning">
+                <div>{{signin_error}}</div>
+            </div>
+            <div *ngIf="sent_success" class="alert alert-success">
+               <div>{{sent_success}}</div>
+            </div>
+            <div class="signin_title">Login</div>
+            <div class="register-item">
+              <form [formGroup]="loginForm" (ngSubmit)="onSignin()">
+                <div class="form-group">
+                    <input type="text" formControlName="email" placeholder="Email Address*" class="form-control" [ngClass]="{ 'is-invalid': signin && f_in.email.errors }" />
+                    <div *ngIf="signin && f_in.email.errors" class="invalid-feedback">
+                        <div *ngIf="f_in.email.errors.required">Email is required</div>
+                        <div *ngIf="f_in.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" formControlName="password" placeholder="Password*" class="form-control" [ngClass]="{ 'is-invalid': signin && f_in.password.errors }" />
+                    <div *ngIf="signin && f_in.password.errors" class="invalid-feedback">
+                        <div *ngIf="f_in.password.errors.required">Password is required</div>
+                        <div *ngIf="f_in.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group forgot_pass">
+                    <a class="forgot_pass" (click)="forgot_password()">Forgot your password?</a>
+                </div>
+                <div class="form-group">
+                    <button  mat-button mat-raised-button class="login_btn">Login</button>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div *ngIf="!isSignin">
+            <div *ngIf="signup_error" class="alert alert-warning">
+                <div>{{signup_error}}</div>
+            </div>
+            <div class="signup_title">Create Your Account</div>
+            <div class="signup_sub_title">Please Select Account Type</div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSignup()">
+              <div class="row checkgroup">
+                <div class="form-group col-sm-6 make-it-flex">
+                    <input class="flex-item-1" formControlName="advertise" type="checkbox" id="checkbox-2-1" class="regular-checkbox big-checkbox" (click)="onCheck('checkbox-2-2')"><label class="check_label" for="checkbox-2-1"></label>
+                    <p class="flex-item-2 check_label">Advertise</p>
+                </div>
+                <div class="form-group col-sm-6 make-it-flex">
+                    <input class="flex-item-1" formControlName="browser" type="checkbox" id="checkbox-2-2" class="regular-checkbox big-checkbox" checked (click)="onCheck('checkbox-2-1')"><label class="check_label" for="checkbox-2-2"></label>
+                    <p class="flex-item-2 check_label" >Browser</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-6">
+                    <input type="text" formControlName="firstName" placeholder="First Name*" class="form-control" [ngClass]="{ 'is-invalid': signup && f_up.firstName.errors }" />
+                    <div *ngIf="signup && f_up.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f_up.firstName.errors.required">First Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="text" formControlName="lastName" placeholder="LastName*" class="form-control" [ngClass]="{ 'is-invalid': signup && f_up.lastName.errors }" />
+                    <div *ngIf="signup && f_up.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f_up.lastName.errors.required">Last Name is required</div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <input type="text" formControlName="email" placeholder="Email Address*" class="form-control" [ngClass]="{ 'is-invalid': signup && f_up.email.errors }" />
+                  <div *ngIf="signup && f_up.email.errors" class="invalid-feedback">
+                      <div *ngIf="f_up.email.errors.required">Email is required</div>
+                      <div *ngIf="f_up.email.errors.email">Email must be a valid email address</div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-sm-6">
+                      <input type="password" formControlName="password" placeholder="Password*" class="form-control" [ngClass]="{ 'is-invalid': signup && f_up.password.errors }" />
+                      <div *ngIf="signup && f_up.password.errors" class="invalid-feedback">
+                          <div *ngIf="f_up.password.errors.required">Password is required</div>
+                          <div *ngIf="f_up.password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                  </div>
+                  <div class="form-group col-sm-6">
+                      <input type="password" formControlName="confirmPassword" placeholder="Confirm Password*" class="form-control" [ngClass]="{ 'is-invalid': signup && f_up.confirmPassword.errors }" />
+                      <div *ngIf="signup && f_up.confirmPassword.errors" class="invalid-feedback">
+                          <div *ngIf="f_up.confirmPassword.errors.required">Confirm Password is required</div>
+                          <div *ngIf="f_up.confirmPassword.errors.mustMatch">Passwords must match</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group make-it-flex terms_check">
+                  <input type="checkbox" formControlName="confirmAccept" id="checkbox-3-1" class="regular-checkbox big-checkbox flex-item-1" [ngClass]="{ 'is-invalid': signup && f_up.confirmAccept.errors }"><label class="check_label" for="checkbox-3-1"></label>
+                  <p class="terms flex-item-2">I accept the <a class="terms" href="">Terms and Conditions</a></p>
+              </div>
+              <div *ngIf="signup && f_up.confirmAccept.errors" class="invalid-checkbox">
+                  <div *ngIf="f_up.confirmAccept.errors">You should accept temrs and conditions to sginup</div>
+              </div>
+              <div class="form-group">
+                  <button mat-button mat-raised-button class="register_btn">Register</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>

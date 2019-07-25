@@ -1,0 +1,26 @@
+.title-header{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #f84f73;
+    padding: 13px;
+}
+.title{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    color: white;
+}
+.sub-title{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    margin: 10px;
+}
+.service-item{
+    font-family: 'Myriad Pro';
+    font-size: 10pt;
+}
+.about-me{
+    /* font-family: 'Myriad Pro';
+    font-size: 10pt; */
+    margin-left: 15px;
+}

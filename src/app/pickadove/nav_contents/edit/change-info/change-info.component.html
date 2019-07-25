@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-lg-6 container">
+        <div><button mat-button class="change" (click)="openChangenNameDialog()">Change Name</button></div>
+        <div><button mat-button class="change" (click)="openChangePsswordDialog()">Change Password</button></div>
+        <div><button mat-button class="change" (click)="openChangeEmailDialog()">Change Email</button></div>
+        <div><button mat-button class="change" (click)="openChangeLocationDialog()"><i class="fa fa-map-marker"></i>&ensp;Change Location</button></div>
+    </div>
+    <div class="col-lg-6 container text-center">
+        <p class="profile_label">Profile Pump Up Auto Cycle</p>
+        <div class="d-flex justify-content-center">
+            <mat-form-field>
+                <input matInput>
+            </mat-form-field>
+            <mat-select [(value)]="selected" class="timeformat">
+                <mat-option value="Min">Min</mat-option>
+                <mat-option value="Hour">Hour</mat-option>
+            </mat-select>
+        </div>
+        <div class="container text-center">
+           <button mat-button class="request_btn">Request Verification</button>
+        </div>
+        <div class="profile">
+            <p class="profile_title">Profile Highlight</p>
+            <div class="d-flex justify-content-center">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                    <span class="absolute-no">OFF</span>
+                </label>
+                <p class="cost_per_week">$10.00/week</p>
+            </div>
+            <div class="container row text-center">
+                <input class="check-auto-cycle col-md-1 regular-checkbox big-checkbox" type="checkbox">
+                <p class="auto-cycle col-md-6">Auto Cycle <br> every week</p>
+            </div>
+            <!-- <mat-checkbox class="cost_per_week">Auto Cycle every week </mat-checkbox> -->
+        </div>
+    </div>
+</div>

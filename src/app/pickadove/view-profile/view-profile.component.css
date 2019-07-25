@@ -1,0 +1,20 @@
+.view_container{
+    padding: 40px 30px;
+    /* background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19); */
+}
+.save_btn{
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 160px;
+    height: 40px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    border-radius: 35px 35px;
+    margin-left: 33px;
+}
+.save_btn:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}

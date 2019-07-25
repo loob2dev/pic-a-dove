@@ -1,0 +1,34 @@
+agm-map{
+    height: 500px;
+}
+.select-location{
+    width: 1000px;
+    position: relative;
+}
+.location-input{
+    width: 50%
+}
+.upload_btn{
+    margin:20px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    font-family: 'Myriad Pro';
+    font-size: 15pt;
+    float: right;
+}
+.upload_btn:hover{
+    color: #fff;
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.close-buton{
+    font-size: 18pt;
+    right: -12px;
+    top: -16px;
+    position: absolute;
+    cursor: pointer;
+}
+.close-buton:hover{
+    color: #f84f73;
+}

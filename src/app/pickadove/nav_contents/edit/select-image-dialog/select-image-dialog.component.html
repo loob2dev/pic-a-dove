@@ -1,0 +1,23 @@
+<div class="container, text-center upload_dlg">
+    <input id="upload_input" type="file" (change)="fileChangeEvent($event)" />
+    <p *ngIf="!selected">Please select an image</p>
+    <span class="upload_notify" *ngIf="message">{{message}}</span>
+    <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="185 / 250"
+        [resizeToWidth]="128"
+        format="png|jpg"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+    <div calss="row">
+        <button  mat-button mat-raised-button class="upload_btn col-xs-6" (click)="selectImage()">Select</button>
+        <button  mat-button mat-raised-button class="upload_btn col-xs-6" (click)="uploadImage()" *ngIf="selected">Upload</button>
+    </div>
+    
+</div>
+
+<!-- <img [src]="croppedImage" style="display: none"/> -->

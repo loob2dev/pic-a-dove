@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Myriad Pro;
+    src: url(../../assets/font/MyriadPro-Light.otf);
+}
+@font-face {
+    font-family: Myriad Pro_Bold;
+    src: url(../../assets/font/MyriadPro-Bold.otf);
+}
+html {
+    height: 100%;
+}
+body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100%;
+     font-family: 'lato', sans-serif;
+     color: #fff;
+     background: rgb(10, 113, 182); 
+ }
+.pd_container{
+    background-color: #f3f3f5;
+}
+.space{
+    height:  40px;
+    width: 100%;
+    background-color: #ffffff;
+}
+.status{
+    background-color: #f84f73;
+    height: 70px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+}
+.logo{
+    margin-top: 3px;
+    margin-left: 20px;
+    height: 100%;
+    padding: 10px;
+    vertical-align: middle;
+}
+.mat-tab-label-active{
+     background-color: #ffffff !important;
+ }
+.mat-tab-label{
+    color: #fa809a;
+    background-color: #fff7f9;
+    padding: 0;
+    box-shadow: 0px 2px 2px 0px rgba(255, 0, 0, 0.2), 0 2px 10px 0 rgba(255, 0, 0, 0.19);
+}
+.mat-tab-label-active{
+    box-shadow: 0;
+}
+.mat-ink-bar {
+    background-color: #00ADEE00 !important;
+}
+.mat-tab-header, .mat-tab-nav-bar {
+    border: 0;
+}
+
+.meat-tab{
+    font-family: 'Myriad Pro';
+    font-size: 14pt;
+}
+button:focus, button:active:focus, button.active:focus {
+    outline: none !important;
+    outline-style: none !important;
+}

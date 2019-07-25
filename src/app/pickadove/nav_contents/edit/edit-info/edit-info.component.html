@@ -1,0 +1,81 @@
+<div class="edit">
+    <div class="row">
+        <p class="col-md-6 label">Birthday</p>
+        <mat-form-field class="col-md-6">
+            <input matInput [matDatepicker]="picker1" [formControl]="date" [(value)]="userinfo.birthday" (dateChange)="changeOtherValue({index: 'birthday', val: $event.target.value})">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <div class="text-right container col-md-5">
+            <mat-error *ngIf="userinfo.birthday_error">requried!</mat-error>
+        </div>
+    </div>
+    <div class="row">
+        <p class="col-md-6 label">Height</p>
+        <mat-form-field class="col-md-6">
+            <input type="number" matInput [(value)]="userinfo.height" (input)="changeOtherValue({index: 'height', val: $event.target.value})">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <div class="text-right container col-md-5">
+            <mat-error *ngIf="userinfo.height_error">requried!</mat-error>
+        </div>
+    </div>
+    <div *ngFor="let field of fields; let i = index">
+        <div class="row" *ngIf="!field.field_type">
+            <p class="col-md-6 label">{{field.label}}</p>
+            <mat-form-field class="col-md-6">
+                <input type="text" matInput [(value)]="field.selected" (input)="changeValue({index: i, val: $event.target.value})" >
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <div class="text-right container col-md-5">
+                <mat-error *ngIf="field.error">requried!</mat-error>
+            </div>
+        </div>
+        <div class="row" *ngIf="field.field_type">
+            <p class="col-md-6 label">{{field.label}}</p>
+            <mat-form-field class="col-md-6">
+                <mat-select [id]="'admin'+field.id_admin" [(value)]="field.selected">
+                    <mat-option value="10px" *ngFor="let option of field.combo" [value]="option.id">{{option.content}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="container ">
+        <div class="contact-info"><i class="fa fa-phone phone-i"></i>Contact Info</div>
+    </div>
+    <div class="row">
+        <p class="col-md-6 label">Preffered Contact Method</p>
+        <mat-form-field class="col-md-6">
+            <input type="text" matInput [(value)]="userinfo.contact_preferred" (input)="changeOtherValue({index: 'contact_preferred', val: $event.target.value})">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <p class="col-md-6 label">Mobile number</p>
+        <mat-form-field class="col-md-6">
+            <input type="text" matInput [(value)]="userinfo.contact_mobile" (input)="changeOtherValue({index: 'contact_mobile', val: $event.target.value})">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="container-ps">
+        <p class="others-contact">OTHERS CONTACTS</p>
+        <div class="row others-contact-c">
+            <div class="col-md-6 d-flex justify-content-center">
+                <!-- <div class="whatsapp"></div> -->
+                <i class="fa fa-whatsapp othercontact-i"></i>
+                <mat-form-field class="col-md-8">
+                    <input type="text" matInput [(value)]="userinfo.contact_whatsapp" (input)="changeOtherValue({index: 'contact_whatsapp', val: $event.target.value})">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <!-- <div class="wechat"></div> -->
+                <i class="fa fa-weixin othercontact-i"></i>
+                <mat-form-field class="col-md-8">
+                    <input type="text" matInput [(value)]="userinfo.contact_wechat" (input)="changeOtherValue({index: 'contact_wechat', val: $event.target.value})">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

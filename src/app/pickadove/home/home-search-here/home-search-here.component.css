@@ -1,0 +1,39 @@
+.title{
+    font-family: 'Myriad Pro_bold';
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.map_btn{
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 120px;
+    height: 40px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    border-radius: 35px 35px;
+    margin-top: 20px;
+}
+.map_btn:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #f7a5b6 !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #f7a5b6 !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #f7a5b6 !important;
+}
+.service-item{
+    font-family: 'Myriad Pro_bold';
+    width: 200px;
+    text-transform: uppercase;
+}

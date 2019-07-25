@@ -1,0 +1,19 @@
+<div class="container select-location">
+    <!-- <i class="fa fa-times close-buton" (click)="cancel()"></i> -->
+    <div class="container">
+        <agm-map [latitude]="data.latitude" [longitude]="data.longitude">
+            <agm-marker [latitude]="data.latitude" [longitude]="data.longitude"></agm-marker>
+        </agm-map>
+    </div>
+    <div class="container p-4">
+        <mat-form-field class="location-input">
+            <mat-label>Address using the directive</mat-label>
+            <input matInput
+                 matGoogleMapsAutocomplete
+                 (onAutocompleteSelected)="onAutocompleteSelected($event)"
+                 (onLocationSelected)="onLocationSelected($event)">
+        </mat-form-field>
+        <button  mat-button mat-raised-button class="upload_btn col-xs-6" (click)="changeLocation()">Change</button>
+    </div>
+</div>
+

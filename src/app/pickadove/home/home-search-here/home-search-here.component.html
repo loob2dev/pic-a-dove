@@ -1,0 +1,32 @@
+<div class="row p-3">
+    <div class="col-md-2 text-center">
+        <p class="title">search here</p>
+        <img src="../../../../assets/img/map-maker.png">
+        <button mat-button class="map_btn">Map View</button>
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <mat-form-field class="m-2 col-md-3">
+                <input type="text" matInput placeholder="Name" [(value)]="fields.name" (input)="changeValue({index: 'name', val: $event.target.value})">
+            </mat-form-field>
+            <mat-form-field class="m-2 col-md-3">
+                <input type="text" matInput placeholder="From Age" [(value)]="fields.ageFrom" (input)="changeValue({index: 'ageFrom', val: $event.target.value})">
+            </mat-form-field>
+            <mat-form-field class="m-2 col-md-3">
+                <input type="text" matInput placeholder="To Age" [(value)]="fields.ageTo" (input)="changeValue({index: 'ageTo', val: $event.target.value})">
+            </mat-form-field>
+            <mat-form-field class="m-2 col-md-3">
+                <input type="text" matInput placeholder="From Height" [(value)]="fields.heightFrom" (input)="changeValue({index: 'heightFrom', val: $event.target.value})">
+            </mat-form-field>
+            <mat-form-field class="m-2 col-md-3">
+                <input type="text" matInput placeholder="To Height" [(value)]="fields.heightTo" (input)="changeValue({index: 'heightTo', val: $event.target.value})">
+            </mat-form-field>
+            <mat-form-field class="m-2 col-md-3">
+                <input type="text" matInput placeholder="Location" [(value)]="fields.location" (input)="changeValue({index: 'location', val: $event.target.value})">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-checkbox class="service-item col-md-2" *ngFor="let service of services">{{service.label}}</mat-checkbox>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row" *ngIf="userInfo">
+    <div class="col-md-6">
+        <p class="name">{{userInfo.firstname + " " + userInfo.lastname}}</p>
+        <p class="status">online</p>
+        <p class="marker-c"><i class="fa fa-map-marker marker-i" aria-hidden="true"></i>{{userInfo.address + " " + userInfo.state}}</p>
+    </div>
+    <div class="col-md-6 text-center">
+        <i class="fa fa-comments-o chat-i" aria-hidden="true"></i>
+        <p class="chat-l">Chat Here</p>
+    </div>
+    <div class="container-ps">
+        <p class="damage-l">Birthday</p>
+        <p class="damage-c">{{userInfo.birthday}}</p>
+    </div>
+    <div class="container-ps">
+        <p class="damage-l">Heigh</p>
+        <p class="damage-c">{{userInfo.height}}</p>
+    </div>
+    <div class="container-ps" *ngFor="let field of userInfo.adminFields">
+        <p class="damage-l">{{field.label}}</p>
+        <p class="damage-c" *ngIf="field.field_type">{{field.val}}</p>
+        <p class="damage-c" *ngIf="!field.field_type">{{field.content_entry}}</p>
+    </div>
+    <div class="container ">
+        <div class="contact-info"><i class="fa fa-phone phone-i"></i>Contact Info</div>
+    </div>
+    <div class="container-ps">
+        <p class="damage-l">Preffered Contact Method</p>
+        <p class="damage-c">{{userInfo.contact_preferred}}</p>
+    </div>
+    <div class="container-ps">
+        <p class="damage-l">Mobile number</p>
+        <p class="damage-c" *ngIf="this.reavel">{{userInfo.contact_mobile}}</p>
+        <p class="damage-c" *ngIf="!this.reavel">{{userInfo.contact_mobile_unreveal}}</p>
+
+    </div>
+    <p class="underline container-ps text-right" *ngIf="!this.reavel" (click)="revealContant()">Click Here To Reveal</p>
+    <div class="container-ps">
+        <p class="others-contact">OTHERS CONTACTS</p>
+        <div class="row others-contact-c">
+            <div class="col-md-6 d-flex justify-content-center">
+                <!-- <div class="whatsapp"></div> -->
+                <i class="fa fa-whatsapp othercontact-i"></i>
+                <p class="phone">{{userInfo.contact_whatsapp}}</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <!-- <div class="wechat"></div> -->
+                <i class="fa fa-weixin othercontact-i"></i>
+                <p class="phone">{{userInfo.contact_wechat}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="text-center, container">
+    <div *ngIf="error" class="alert alert-warning">
+        <div>{{error}}</div>
+    </div>
+    <div *ngIf="success" class="alert alert-success">
+        <div>{{success}}</div>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onChangePassword()">
+        <mat-form-field>
+            <input type="password" formControlName="oldPassword" placeholder="Old Password*" matInput [ngClass]="{ 'is-invalid': signup && f_up.oldPassword.errors }" />
+            <mat-error *ngIf="signup && f_up.oldPassword.errors">
+                <mat-error *ngIf="f_up.oldPassword.errors.required">Password is required</mat-error>
+                <mat-error *ngIf="f_up.oldPassword.errors.minlength">Password must be at least 6 characters</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" formControlName="password" placeholder="Password*" matInput [ngClass]="{ 'is-invalid': signup && f_up.password.errors }" />
+            <mat-error *ngIf="signup && f_up.password.errors">
+                <mat-error *ngIf="f_up.password.errors.required">Password is required</mat-error>
+                <mat-error *ngIf="f_up.password.errors.minlength">Password must be at least 6 characters</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password*" matInput [ngClass]="{ 'is-invalid': signup && f_up.confirmPassword.errors }" />
+            <mat-error *ngIf="signup && f_up.confirmPassword.errors">
+                <mat-error *ngIf="f_up.confirmPassword.errors.required">Confirm Password is required</mat-error>
+                <mat-error *ngIf="f_up.confirmPassword.errors.mustMatch">Passwords must match</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <div class="text-center">
+            <button mat-button mat-raised-button class="register_btn">Change</button>
+        </div>
+    </form>
+</div>
