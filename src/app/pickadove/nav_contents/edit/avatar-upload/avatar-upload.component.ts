@@ -33,7 +33,7 @@ export class AvatarUploadComponent implements OnInit {
   initAvatar(){
     this.userservice.getProfileImage(localStorage.getItem('user_id'), localStorage.getItem('token'), localStorage.getItem('user_id'), (res)=>{
       if(res.success == 1){
-        this.data.croppedImage = 'http://192.168.1.140:4000/' + res.data.imgurl;
+        this.data.croppedImage = res.data.imgcode;
       }else if(res.success == -1){
         this.router.navigate['sign']
       }

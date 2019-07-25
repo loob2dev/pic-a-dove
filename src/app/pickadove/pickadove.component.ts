@@ -24,7 +24,7 @@ export class PickadoveComponent implements OnInit {
   ngOnInit(): void{ 
     setTimeout (() => {
       this.started = true;
-    }, 1500)
+    }, 2000)
     $(document).ready(()=> {
       $('.sign').css("margin-left", ($(window).width() - $('.sign').width())/2);
     });

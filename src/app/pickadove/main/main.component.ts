@@ -50,7 +50,7 @@ export class MainComponent implements OnInit {
 
   live:boolean = false;
 
-  imsUrl : string;
+  imsUrl : string = "../../../assets/img/avatar.png";
 
   constructor(private exchangeService: DataExchangeService, private router: Router, private userservice: UsersService, private userService: UsersService) { }
 
@@ -86,7 +86,8 @@ export class MainComponent implements OnInit {
     });
 
     this.exchangeService.changeThumbnailObserver.subscribe(change=>{
-      this.updateThumbnail();
+      if(change)
+        this.updateThumbnail();
     })
   }
 

@@ -58,7 +58,6 @@ export class SelectImageDialogComponent implements OnInit {
 
   uploadImage(){
     this.exchangeService.setLoading(true);
-    console.log("base64", this.imgcode);
     this.userService.uploadProfileImage(localStorage.getItem('user_id'), localStorage.getItem('token'), this.file, this.imgcode, (res)=>{
       if(res.success == 1){
         this.toastr.success(res.message); 
