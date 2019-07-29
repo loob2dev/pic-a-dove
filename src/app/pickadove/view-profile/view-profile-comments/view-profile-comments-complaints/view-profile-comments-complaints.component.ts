@@ -32,24 +32,33 @@ export class ViewProfileCommentsComplaintsComponent implements OnInit {
     this.submit = true;
 
     // stop here if form is invalid
-    if (this.submitForm.invalid) {
-        return;
+    var iErrorCount = 0;
+    if ($(".nickname-input").val() == ''){
+      this.submitForm.controls.nickName.setErrors({required: true});
+      iErrorCount++;
+    }
+    if ($(".chat-contnet-input").val() == ''){
+      this.submitForm.controls.content.setErrors({required: true});
+      iErrorCount++;
+    }
+    if(iErrorCount > 0){
+      return;
     }
 
     var comment = {
       nickName: this.submitForm.value.nickName,
       time: "",
-      content: this.submitForm.value.content
+      content: $(".chat-contnet-input").val()
     }
     this.comments.push(comment);
 
-    $(".chat-contnet-input").val(null);
-    $(".nickname-input").val(null);
-    
+    $(".chat-contnet-input").val('');
+    $(".nickname-input").val('');    
   }
 
   addEmoji(event){
     var text = $(".chat-contnet-input").val() + event.emoji.native;
     $(".chat-contnet-input").val(text);
+    this.submitForm.controls.content.setErrors(null)
   }
 }

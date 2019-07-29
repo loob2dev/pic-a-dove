@@ -19,7 +19,8 @@ interface SearchResult{
   comment: {id_comment: number, id_user: number, comment: string, commenttype: string, created_at: string}
   comments: number
   complaints: number
-  contact_mobile: number
+  contact_mobile: any
+  contact_mobile_unreveal: any
   email: number
   firstname: number
   galleries: [{id_gallery: number, imgurl: string}]
@@ -123,6 +124,12 @@ export class HomeComponent implements OnInit {
     this.userService.getTopProfile(localStorage.getItem('user_id'), localStorage.getItem('token'), infor.state, infor.name, infor.ageFrom, infor.ageTo, infor.heightFrom, infor.heightTo, infor.location, (resTopProfile)=>{
       if(resTopProfile.success){
         this.searchResult = resTopProfile.data;
+        try {
+          var phone_hidden_number = this.searchResult.contact_mobile.substring(0, 3) + "XXXX"; 
+          this.searchResult.contact_mobile_unreveal = phone_hidden_number;
+        } catch (error) {
+          
+        }
         this.userService.getProfileList(localStorage.getItem('user_id'), localStorage.getItem('token'), infor.state, infor.name, infor.ageFrom, infor.ageTo, infor.heightFrom, infor.heightTo, infor.location, (resProfiles)=>{
           if(resProfiles.success){
             this.profilesResult = resProfiles.data;

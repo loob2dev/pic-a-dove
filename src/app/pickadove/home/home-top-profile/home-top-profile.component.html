@@ -1,9 +1,9 @@
 <div class="profile-c" *ngIf="result">
     <p class="title">TOP PROFILE</p>
     <div class="row">
-        <div class="col-lg-6 d-flex justify-content-between">
-            <img class="avatar" [src]="'http://192.168.1.140:4000/' + result.imgurl" (click)="selectAd(result.id_user)">
-            <div class="container">
+        <div class="col-lg-6 row">
+            <img class="avatar col-md-4" [src]="'http://192.168.1.140:4000/' + result.imgurl" (click)="selectAd(result.id_user)">
+            <div class="container col-md-8">
                 <div>
                     <div class="row">
                         <div class="col-lg-6">
@@ -17,15 +17,18 @@
                         </div>
                         <div class="col-lg-6">
                             <p class="contact-no">Contact No</p>
-                            <p class="contact-number">{{result.contact_mobile   }}</p>
-                            <p class="reveal-number">Reveal Number</p>
+                            <p class="contact-number">{{result.contact_mobile}}</p>
+                            <p class="damage-c" *ngIf="this.reavel">{{result.contact_mobile}}</p>
+                            <p class="damage-c" *ngIf="!this.reavel">{{result.contact_mobile_unreveal}}</p>
+
+                            <p class="reveal-number"  *ngIf="!this.reavel" (click)="revealContant()">Reveal Number</p>
                         </div>
                     </div>
                 </div>
                 <br>
                 <div class="comment" *ngIf="result.comment">
                     <p class=comment-name>{{result.comment.firstname + " " + result.comment.lastname}}</p>
-                    <p class="comment-time">{{result.comment.created_at}}</p>
+                    <p class="comment-time">{{result.comment.created_at | date: 'dd/MM/yyyy'}}</p>
                     <p class="comment-content">{{result.comment.comment}}</p>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UsersService } from 'src/app/service/users.service';
 
 interface UserInfo{
   address: string
@@ -65,7 +66,7 @@ export class ViewProfilePersionalInfoComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
   }
@@ -73,5 +74,7 @@ export class ViewProfilePersionalInfoComponent implements OnInit {
   reavel: boolean = false;
   revealContant(){
     this.reavel = true
+
+    this.usersService.revealContactInfo(localStorage.getItem('user_id'), localStorage.getItem('token'), this.userInfo.id_user, (res)=>{});
   }
 }

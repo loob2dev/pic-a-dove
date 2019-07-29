@@ -42,7 +42,7 @@ export class PhotoGalleryComponent implements OnInit {
     //config and open dialog
     const dialogConfig = new MatDialogConfig();
 
-    const dialogRef = this.dialog.open(SelectImageDialogComponent,  { data: data, disableClose: true });
+    const dialogRef = this.dialog.open(SelectImageDialogComponent,  { data: data, disableClose: false });
 
     this.exchangeService.DlgCanceled.subscribe(cancel => {
       if (cancel){

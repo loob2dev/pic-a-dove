@@ -3,6 +3,8 @@ import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { UsersService } from 'src/app/service/users.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
+import { Scheduler } from 'rxjs';
 
 interface Field{
   field_type: any,
@@ -25,7 +27,12 @@ interface Schedule {
   isPmTo: number,
   w_day: number,
   w_from: number,
-  w_to: number
+  w_to: number,
+  week: any,
+  hourFrom: any,
+  hourTo: any,
+  formatFrom: any,
+  formatTo: any
 }
 
 @Component({
@@ -35,10 +42,15 @@ interface Schedule {
 })
 export class EditComponent implements OnInit {
 
+  week = [{id: 0, name: 'SUN'},{id: 1, name: 'MON'},{id: 2, name: 'TUE'},{id: 3, name: 'WED'},{id: 4, name: 'THU'},{id: 5, name: 'FRI'},{id:6, name: 'SAT'}]
+  hour = [{id: 1, name: 1},{id: 2, name: 2},{id: 3, name: 3},{id: 4, name: 4},{id: 5, name: 5},{id: 6, name: 6},
+          {id: 7, name: 7},{id: 8, name: 8},{id: 9, name: 9},{id: 10, name: 10},{id: 11,  name: 11},{id: 12, name: 12}]
+  timeFormat = [{id: 0, name: 'AM'}, {id: 1, name: 'PM'}]
+
   adminFields = [];
   details: any;
   details_data: any = {};
-  workHours: [];
+  workHours: Array<Schedule>;
 
   constructor(private exchangeService: DataExchangeService, private userService: UsersService, private toastr: ToastrService, private router: Router) { }
 
@@ -59,7 +71,47 @@ export class EditComponent implements OnInit {
       if(!hours.success){
         return
       }
+
       this.workHours = hours.data;
+      this.workHours.forEach((schedul : Schedule) => {
+        var week = [];
+        this.week.forEach(day => {
+          week.push(day);
+        })
+        
+        var hourFrom = [];
+        var hourTo = [];
+        if (schedul.isPmFrom == schedul.isPmTo){
+          this.hour.forEach((element, index) => {
+            hourFrom.push(element);
+            if(index >= schedul.w_from - 1){
+              hourTo.push(element);
+            }
+          })
+        }else if (schedul.isPmFrom < schedul.isPmTo){
+          this.hour.forEach((element, index) => {
+            hourFrom.push(element);
+            hourTo.push(element);
+          })
+        }        
+      
+        var formatFrom = [];
+        var formatTo = [];
+        this.timeFormat.forEach((element, index) => {
+          formatFrom.push(element);
+          if(index >= schedul.isPmFrom - 1){
+            formatTo.push(element);
+          }
+        })
+        schedul.week = week;
+        schedul.hourFrom = hourFrom;
+        schedul.hourTo = hourTo;
+        schedul.formatFrom = formatFrom;
+        schedul.formatTo = formatTo;
+      })
+
+
+      
       this.userService.getAdminFields(localStorage.getItem('user_id'), localStorage.getItem('token'), (adminfields)=> {
         if(!adminfields.success){
           return;
@@ -105,17 +157,18 @@ export class EditComponent implements OnInit {
   }
 
   completeProfile(){
+    var errorCount = 0;
     var user_id = localStorage.getItem('user_id')
     var token = localStorage.getItem('token');
     var birthday = this.details_data.birthday;
     if(birthday == null || birthday == ""){
       this.details_data.birthday_error = true;
-      return;
+      errorCount++
     }
     var height = this.details_data.height;
     if(height == null || height == ""){
       this.details_data.height_error = true;
-      return;
+      errorCount++;
     }
     var mobile = this.details_data.contact_mobile;
     var wechat = this.details_data.contact_wechat
@@ -136,7 +189,7 @@ export class EditComponent implements OnInit {
     this.adminFields.forEach((element : Field) => {
       if(element.isrequired && (element.selected == null || element.selected == "")){
         element.error = true;
-        return;
+        errorCount++;
       }
       var field = {
         "id_admin": element.id_admin,
@@ -145,6 +198,8 @@ export class EditComponent implements OnInit {
       }
       adminFields.push(field);
     });
+    if(errorCount > 0)
+      return;
     this.userService.completeProfile(user_id, token, birthday, height, mobile, wechat, whatsapp, preferred, workhours, adminFields, (res) =>{
       if(res.success == 1){
         this.toastr.success(res.message);

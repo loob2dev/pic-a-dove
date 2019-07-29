@@ -1,5 +1,5 @@
 <div class="container, text-center upload_dlg">
-    <input id="upload_input" type="file" (change)="fileChangeEvent($event)" />
+    <input id="upload_input" type="file" accept="image/*" (change)="fileChangeEvent($event)" />
     <p *ngIf="!selected">Please select an image</p>
     <span class="upload_notify" *ngIf="message">{{message}}</span>
     <image-cropper

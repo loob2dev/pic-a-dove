@@ -6,7 +6,7 @@
 }
 .avatar{
     width: 170px;
-    height: 170px;
+    height: 190px;
     margin: auto;
     cursor: pointer;
 }
@@ -91,18 +91,18 @@
 
 .label-recent{
     font-family: 'Myriad Pro';
-    font-size: 20px;
+    font-size: 15px;
     text-transform: capitalize;
     color: #a4a4a5;
 }
 .content-recent{
     font-family: 'Myriad Pro';
-    font-size: 20px;
+    font-size: 15px;
     text-transform: capitalize;
     color: #a4a4a5;
 }
 .match{
-    margin-top: 0px;
+    margin-top: 14px;
 }
 /*  */
 .recent-card{

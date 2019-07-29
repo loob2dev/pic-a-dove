@@ -1,6 +1,6 @@
 .avatar{
     width: 170px;
-    height: 170px;
+    height: 190px;
     margin: auto;
     cursor: pointer;
 }
@@ -85,18 +85,18 @@
 
 .label-gallery{
     font-family: 'Myriad Pro';
-    font-size: 20px;
+    font-size: 15px;
     text-transform: capitalize;
     color: #a4a4a5;
 }
 .content-gallery{
     font-family: 'Myriad Pro';
-    font-size: 20px;
+    font-size: 15px;
     text-transform: capitalize;
     color: #a4a4a5;
 }
 .match{
-    margin-top: -20px;
+    margin-top: -11px;
 }
 /* 5 columns */
 .col-xs-5th-1, .col-xs-5th-2, .col-xs-5th-3, .col-xs-5th-4 {

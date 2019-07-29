@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { CarouselModule, WavesModule, CarouselComponent } from 'angular-bootstrap-md';
+import { UsersService } from 'src/app/service/users.service';
 
 declare var $:any;
 
@@ -70,7 +71,7 @@ export class HomeTopProfileComponent implements OnInit {
   right = false;
   left = false;
 
-  constructor(private exchangeService: DataExchangeService ) { }
+  constructor(private exchangeService: DataExchangeService, private usersService: UsersService) { }
 
   ngOnInit() {
     for(var i = 0; i < this.data.gallery.length; i++){
@@ -199,5 +200,11 @@ export class HomeTopProfileComponent implements OnInit {
       R.push(arr.slice(i, i + chunkSize));
     }
     return R;
+  }
+  reavel: boolean = false;
+  revealContant(){
+    this.reavel = true
+
+    this.usersService.revealContactInfo(localStorage.getItem('user_id'), localStorage.getItem('token'), this.result.id_user, (res)=>{});
   }
 }
