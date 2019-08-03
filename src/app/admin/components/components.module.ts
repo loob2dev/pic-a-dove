@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { navbar_aComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
@@ -13,12 +13,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   declarations: [
     FooterComponent,
-    NavbarComponent,
+    navbar_aComponent,
     SidebarComponent
   ],
   exports: [
     FooterComponent,
-    NavbarComponent,
+    navbar_aComponent,
     SidebarComponent
   ]
 })

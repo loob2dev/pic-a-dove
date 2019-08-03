@@ -78,7 +78,7 @@
                       <div *ngIf="f_up.email.errors.required">Email is required</div>
                       <div *ngIf="f_up.email.errors.email">Email must be a valid email address</div>
                   </div>
-              </div>
+              </div> 
               <div class="row">
                   <div class="form-group col-sm-6">
                       <input type="password" formControlName="password" placeholder="Password*" class="form-control" [ngClass]="{ 'is-invalid': signup && f_up.password.errors }" />

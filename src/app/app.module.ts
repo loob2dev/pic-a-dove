@@ -99,7 +99,7 @@ import { ChangeEmailDialogComponent } from './pickadove/nav_contents/edit/change
 
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
 
-import {ToastrModule} from 'ngx-toastr'
+import {ToastrModule} from 'ngx-toastr';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',

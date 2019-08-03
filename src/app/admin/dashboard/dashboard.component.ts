@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { DataExchangeService } from 'src/app/service/data-exchange.service';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/service/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +12,13 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  userData:any;
+
+  constructor(
+    private exchangeService: DataExchangeService, 
+    private toastr: ToastrService,
+    private userService: UsersService,
+    private router: Router) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -145,6 +155,23 @@ export class DashboardComponent implements OnInit {
 
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
+
+      //call api
+      this.exchangeService.setLoading(true);
+      this.userService.getAdminUsersCount(localStorage.getItem('user_id'), localStorage.getItem('token'), (res)=>{
+        if (res.success == 1){
+          this.toastr.success(res.message);
+          this.userData = res.data
+        } else if(res.success == 0){
+          this.toastr.error(res.message);
+        } else if(res.success == -1){
+          this.toastr.error(res.message);
+          this.router.navigate['sign']
+        }
+        setTimeout (() => {
+          this.exchangeService.setLoading(false);
+        }, 1000);
+      })  
   }
 
 }

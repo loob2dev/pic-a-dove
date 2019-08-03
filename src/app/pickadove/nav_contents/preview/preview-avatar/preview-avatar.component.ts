@@ -22,15 +22,18 @@ export class PreviewAvatarComponent implements OnInit {
 
   ngOnInit() {
     this.userservice.getMyProfileDetails(localStorage.getItem('user_id'), localStorage.getItem('token'), (details)=> {
-      if(details.success){
+      if(details.success == 1){
         this.userinfo = details.data;
         this.userservice.getProfileImage(localStorage.getItem('user_id'), localStorage.getItem('token'), localStorage.getItem('user_id'), (res)=>{
           if(res.success == 1){
             this.data.croppedImage = res.data.imgcode;
+            console.log(this.data.croppedImage);
           }else if(res.success == -1){
             this.router.navigate['sign']
           }
         })
+      } else if(details.success == -1){
+        this.router.navigate['sign']
       }
     });
   }

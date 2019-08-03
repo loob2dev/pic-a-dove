@@ -15,4 +15,10 @@ export class AuthService {
     return token == null? false : true;
     // return !this.jwtHelper.isTokenExpired(token);
   }
+
+  public isUserState(): boolean {
+    const type = localStorage.getItem('type');
+
+    return type == '2' ? false : true;
+  }
 }

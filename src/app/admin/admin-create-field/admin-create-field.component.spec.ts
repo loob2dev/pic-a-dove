@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableListComponent } from './table-list.component';
+import { AdminCreateFieldComponent } from './admin-create-field.component';
 
-describe('TableListComponent', () => {
-  let component: TableListComponent;
-  let fixture: ComponentFixture<TableListComponent>;
+describe('AdminCreateFieldComponent', () => {
+  let component: AdminCreateFieldComponent;
+  let fixture: ComponentFixture<AdminCreateFieldComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TableListComponent ]
+      declarations: [ AdminCreateFieldComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableListComponent);
+    fixture = TestBed.createComponent(AdminCreateFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

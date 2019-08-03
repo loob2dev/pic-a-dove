@@ -4,11 +4,11 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbar_a',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class navbar_aComponent implements OnInit {
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
@@ -22,8 +22,8 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
-      const navbar: HTMLElement = this.element.nativeElement;
-      this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+      const navbar_a: HTMLElement = this.element.nativeElement;
+      this.toggleButton = navbar_a.getElementsByClassName('navbar_a-toggler')[0];
       this.router.events.subscribe((event) => {
         this.sidebarClose();
          var $layer: any = document.getElementsByClassName('close-layer')[0];
@@ -54,7 +54,7 @@ export class NavbarComponent implements OnInit {
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
-        var $toggle = document.getElementsByClassName('navbar-toggler')[0];
+        var $toggle = document.getElementsByClassName('navbar_a-toggler')[0];
 
         if (this.sidebarVisible === false) {
             this.sidebarOpen();

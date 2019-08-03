@@ -56,10 +56,7 @@
             <input type="text" matInput [(value)]="userinfo.contact_mobile" (input)="changeOtherValue({index: 'contact_mobile', val: $event.target.value})">
             <mat-icon matSuffix>mode_edit</mat-icon>
         </mat-form-field>
-    </div>
-    <div class="container-ps">
-        <p class="others-contact">OTHERS CONTACTS</p>
-        <div class="row others-contact-c">
+        <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
                 <!-- <div class="whatsapp"></div> -->
                 <i class="fa fa-whatsapp othercontact-i"></i>
@@ -75,6 +72,18 @@
                     <input type="text" matInput [(value)]="userinfo.contact_wechat" (input)="changeOtherValue({index: 'contact_wechat', val: $event.target.value})">
                     <mat-icon matSuffix>mode_edit</mat-icon>
                 </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="container-ps">
+        <p class="others-contact">OTHERS CONTACTS</p>
+        <div class="row others-contact-c">
+            <div class="col-md-6 d-flex justify-content-center" *ngFor="let contact of userinfo.otherContacts; let i = index">
+                <img height="40px" [ngStyle]="{'background-image': 'url(' + 'http://192.168.1.140:4000/' + contact.icon + ')'}">
+                <mat-form-field class="col-md-8">
+                    <input type="text" matInput [(value)]="contact.content" placeholder="Contact" (input)="changeOtherContact({object: contact, val: $event.target.value})">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>        
             </div>
         </div>
     </div>

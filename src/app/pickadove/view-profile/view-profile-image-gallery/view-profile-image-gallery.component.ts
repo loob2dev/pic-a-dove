@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-view-profile-image-gallery',
@@ -7,12 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewProfileImageGalleryComponent implements OnInit {
 
-  images: any = [
-    {id: "0", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "1", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "2", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "3", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "4", locked: false, croppedImage: "../../../../assets/img/avatar.png" }];
+  @Input() userInfo;
 
   constructor() { }
 

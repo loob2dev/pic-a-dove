@@ -21,20 +21,16 @@ interface SearchField{
 export class HomeSearchHereComponent implements OnInit {
 
   @Input() fields : SearchField;
+  @Input() services: [];
 
-  services : []
+  constructor() { }
 
-  constructor(private userservice: UsersService, private toastr: ToastrService) { }
-
-  ngOnInit() {
-    this.userservice.getGirlsService(localStorage.getItem('user_id'), localStorage.getItem('token'), (services)=> {
-      if(!services.success){
-        return;
-      }
-      this.services = services.data;
-    })
-  }
+  ngOnInit() {}
   changeValue(event){
     this.fields[event.index] = event.val;
+  }
+
+  onCheck(event){
+    event.object.value=event.val ? 1 : 0;
   }
 }

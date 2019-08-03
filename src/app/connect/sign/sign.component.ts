@@ -93,6 +93,7 @@ export class SignComponent implements OnInit{
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('user_id', res.data.user_id);
           localStorage.setItem('status', res.data.status);
+          localStorage.setItem('type', res.data.type);
           switch(res.data.status){
             case -1:
               this.router.navigate(['sign']);
@@ -102,7 +103,12 @@ export class SignComponent implements OnInit{
               break;
             case 1:
             case 2:
-              this.router.navigate(['']);
+              if (res.data.type == '0' || res.data.type == '1'){
+                this.router.navigate(['']);
+              }else{
+                this.router.navigate(['admin']);
+              }
+              
               break;
           }
         }else if(res.success == -1){

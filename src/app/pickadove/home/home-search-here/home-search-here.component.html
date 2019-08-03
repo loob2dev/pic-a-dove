@@ -26,7 +26,7 @@
             </mat-form-field>
         </div>
         <div class="row">
-            <mat-checkbox class="service-item col-md-2" *ngFor="let service of services">{{service.label}}</mat-checkbox>
+            <mat-checkbox class="service-item col-md-2" *ngFor="let service of services" [(ngModel)] = "service.value" (change)="onCheck({object: service, val: $event.checked})">{{service.label}}</mat-checkbox>
         </div>
     </div>
 </div>

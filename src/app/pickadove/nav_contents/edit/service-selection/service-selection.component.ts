@@ -16,8 +16,10 @@ export class ServiceSelectionComponent implements OnInit {
 
   ngOnInit() {
     this.userservice.getGirlsService(localStorage.getItem('user_id'), localStorage.getItem('token'), (services)=> {
-      if(!services.success){
+      if(services.success == 0){
         return;
+      } else if( services.success == -1){
+        this.router.navigate['sign']
       }
       this.services = services.data;
     })

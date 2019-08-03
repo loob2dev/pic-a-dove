@@ -1,7 +1,7 @@
 import { Component, OnInit, NgModule, Input, ViewChild } from '@angular/core';
 
 import { MDBBootstrapModule, FasDirective } from 'angular-bootstrap-md';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { trigger, transition, style, animate, state } from '@angular/animations';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { Router } from '@angular/router';
@@ -14,11 +14,21 @@ declare var $:any;
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   animations: [
-    trigger('fade', [ 
-      transition('void => *', [
-        style({ opacity: 0 }), 
-        animate(2000, style({opacity: 1}))
-      ]) 
+    // the fade-in/fade-out animation.
+    trigger('FadeAnimation', [
+
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({opacity: 1})),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(500 )
+      ]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave',
+        animate(500, style({opacity: 0})))
     ])
   ]
 })
@@ -139,7 +149,7 @@ export class MainComponent implements OnInit {
     this.home=true;
     this.exchangeService.openHomePage(true);
     this.userService.getMyProfileDetails(localStorage.getItem('user_id'), localStorage.getItem('token'), (details)=> {
-      if(details.success){
+      if(details.success == 1){
         this.states.forEach(element => {
           if(details.data.locationInfo.state == element.name){
             var id = element.id;
@@ -155,6 +165,8 @@ export class MainComponent implements OnInit {
             this.exchangeService.goSearch(this.currentState);            
           }
         });
+      } else if (details.success == -1){
+        this.router.navigate['sign']
       }
     });
 

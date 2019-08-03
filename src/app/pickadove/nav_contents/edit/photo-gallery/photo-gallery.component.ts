@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { SelectImageDialogComponent } from '../select-image-dialog/select-image-dialog.component';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/service/users.service';
+import { Router } from '@angular/router';
 
 declare var $:any;
 
@@ -13,58 +16,94 @@ declare var $:any;
 })
 export class PhotoGalleryComponent implements OnInit {
 
+  @Input() galleries;
+
   croppedImage: any = "../../../../assets/img/avatar.png";
-  images: any = [
-    {id: "0", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "1", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "2", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "3", locked: false, croppedImage: "../../../../assets/img/avatar.png" },
-    {id: "4", locked: false, croppedImage: "../../../../assets/img/avatar.png" }];
 
-  current_id : any;
-
-  constructor(public dialog: MatDialog, private exchangeService: DataExchangeService) { }
+  constructor(private exchangeService: DataExchangeService, 
+              private toastr: ToastrService,
+              private userService: UsersService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
-  selectImage() {
-    var data = { 
-      id: this.images.length,
-      croppedImage: "../../../../assets/img/avatar.png" 
+  preview(files) {
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      var message = "Only images are supported.";
+      this.toastr.error(message);
+      return;
+    }
+    var data = {
+      imgurl: "../../../../assets/img/avatar.png" 
     };
-    this.current_id = this.images.length;
-    this.images.push(data);
 
-    this.exchangeService.closedUploadDlg(false);
-    this.exchangeService.cancelDlg(false);
+    var reader = new FileReader();
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      var data = {
+        imgurl:  reader.result
+      };
+      this.galleries.push(data);
+      //call api
+      this.exchangeService.setLoading(true);
+      this.userService.uploadGallery(localStorage.getItem('user_id'), localStorage.getItem('token'), files[0], (res)=>{
+        if (res.success == 1){
+          this.toastr.success(res.message);
+          this.exchangeService.refreshEditPage(true);
+        } else if(res.success == 0){
+          this.toastr.error(res.message);
+        } else if(res.success == -1){
+          this.toastr.error(res.message);
+          this.router.navigate['sign']
+        }
+        setTimeout (() => {
+          this.exchangeService.setLoading(false);
+        }, 1000);
+      })  
+    }
+  }
 
-    //config and open dialog
-    const dialogConfig = new MatDialogConfig();
-
-    const dialogRef = this.dialog.open(SelectImageDialogComponent,  { data: data, disableClose: false });
-
-    this.exchangeService.DlgCanceled.subscribe(cancel => {
-      if (cancel){
-        dialogRef.close()
-        this.deleteIamge(this.current_id);
-      }
-    })
-
-    this.exchangeService.selectDlgStatus.subscribe(close => {
-      if  (close)  {
-        dialogRef.close()};
-      }
-        
-      )
+  selectImage() {
+      $(".inputFile").click();
   }
   deleteIamge(id){
-    var tmp = [];
-    for(var i = 0; i < this.images.length; i++){
-      if (id != this.images[i].id){
-        tmp.push(this.images[i]);
+    this.exchangeService.setLoading(true);
+    this.userService.deleteGallery(localStorage.getItem('user_id'), localStorage.getItem('token'), id, (res)=>{
+      if (res.success == 1){
+        this.toastr.success(res.message);
+        this.exchangeService.refreshEditPage(true);
+      } else if(res.success == 0){
+        this.toastr.error(res.message);
+      } else if(res.success == -1){
+        this.toastr.error(res.message);
+        this.router.navigate['sign']
       }
-    }
-    this.images = tmp;
+      setTimeout (() => {
+        this.exchangeService.setLoading(false);
+      }, 1000);
+    })
+  }
+
+  onLock(event){
+    this.exchangeService.setLoading(true);
+    this.userService.lockGallery(localStorage.getItem('user_id'), localStorage.getItem('token'), event.id, event.val, (res)=>{
+      if (res.success == 1){
+        this.toastr.success(res.message);
+        this.exchangeService.refreshEditPage(true);
+      } else if(res.success == 0){
+        this.toastr.error(res.message);
+      } else if(res.success == -1){
+        this.toastr.error(res.message);
+        this.router.navigate['sign']
+      }
+      setTimeout (() => {
+        this.exchangeService.setLoading(false);
+      }, 1000);
+    })
   }
 }

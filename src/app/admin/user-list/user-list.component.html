@@ -1,0 +1,168 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row" *ngIf="userData">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Administrators</h4>
+                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        More...
+                                    </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let admin of userData.admins; let ID = index">
+                                      <td>
+                                          {{ID}}
+                                      </td>
+                                      <td>
+                                         {{admin.firstname + ' ' + admin.lastname}}
+                                      </td>
+                                      <td>
+                                         {{admin.email}}
+                                      </td>
+                                      <td class="text-primary">
+                                        <button mat-raised-button type="button" matTooltip="View & Edit" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title mt-0">Advertisers</h4>
+                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                            <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th>
+                                    Birthday
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    More...
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let advertiser of userData.advertisers; let ID = index">
+                                    <td>
+                                        {{ID}}
+                                    </td>
+                                    <td>
+                                        {{advertiser.firstname + ' ' + advertiser.lastname}}
+                                    </td>
+                                    <td>
+                                        {{advertiser.state}}
+                                    </td>
+                                    <td>
+                                        {{advertiser.birthday | date: 'dd/MM/yyyy'}}
+                                    </td>
+                                    <td class="text-primary">
+                                        {{advertiser.email}}
+                                    </td>
+                                    <td class="text-primary">
+                                        <button mat-raised-button type="button" matTooltip="View & Edit" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="viewAdertiser(advertiser.id_user)">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title mt-0">Browsers</h4>
+                    <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    State
+                                </th>
+                                <th>
+                                    Birthday
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    More...
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let browser of userData.browsers; let ID = index">
+                                    <td>
+                                        {{ID}}
+                                    </td>
+                                    <td>
+                                        {{browser.firstname + ' ' + browser.lastname}}
+                                    </td>
+                                    <td>
+                                        {{browser.state}}
+                                    </td>
+                                    <td>
+                                        {{browser.birthday | date: 'dd/MM/yyyy'}}
+                                    </td>
+                                    <td class="text-primary">
+                                        {{browser.email}}
+                                    </td>
+                                    <td class="text-primary">
+                                        <button mat-raised-button type="button" matTooltip="View & Edit" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

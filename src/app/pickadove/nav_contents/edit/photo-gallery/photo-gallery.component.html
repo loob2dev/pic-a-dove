@@ -3,12 +3,13 @@
 </div>
 <div>
     <button mat-button class="upload_btn" (click)="selectImage()">Upload</button>
+    <input #file type="file" accept='image/*' (change)="preview(file.files)" class="inputFile"/>
 </div>
 <div class="row gallery">
-    <div class="col-md-3 col-sm-6 col-xs-6 gallery-item" *ngFor="let image of images" id={{image.id}}>
+    <div class="col-md-3 col-sm-6 col-xs-6 gallery-item" *ngFor="let image of galleries" id={{image.id}}>
         <div class="img-card text-center">
-            <div class="avatar" [ngStyle]="{'background-image': 'url(' + image.croppedImage + ')'}">
-                <img *ngIf="image.locked" src="../../../../../assets/img/lock.png" class="lock">
+            <div class="avatar" [ngStyle]="{'background-image': 'url(' + image.imgurl + ')'}">
+                <img *ngIf="image.islock" src="../../../../../assets/img/lock.png" class="lock">
                 <img src="../../../../../assets/img/check.png" class="check">
             </div>
             <div class="d-flex justify-content-end m-2">
@@ -19,8 +20,8 @@
             </div>
         </div>
         <div class="container">
-            <mat-checkbox [(ngModel)]="image.locked" class="lock-check">LOCK</mat-checkbox>
-            <p class="delete-btn" (click)="deleteIamge(image.id)">DELET</p>
+            <mat-checkbox [(ngModel)]="image.islock" class="lock-check" (change)="onLock({id : image.id_gallery, val: image.islock})">LOCK</mat-checkbox>
+            <p class="delete-btn pull-right" (click)="deleteIamge(image.id_gallery)">DELET</p>
         </div>
     </div>
 </div>

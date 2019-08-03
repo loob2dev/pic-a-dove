@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatMonthView } from '@angular/material';
 import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { element } from 'protractor';
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 interface Schedule{
   id_user: any,
@@ -16,7 +17,25 @@ interface Schedule{
 @Component({
   selector: 'app-work-hour',
   templateUrl: './work-hour.component.html',
-  styleUrls: ['./work-hour.component.css']
+  styleUrls: ['./work-hour.component.css'],
+  animations: [
+    // the fade-in/fade-out animation.
+    trigger('FadeAnimation', [
+
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({opacity: 1})),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(200 )
+      ]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave',
+        animate(200, style({opacity: 0})))
+    ])
+  ]
 })
 export class WorkHourComponent implements OnInit {
 

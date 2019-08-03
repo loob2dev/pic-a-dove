@@ -6,7 +6,7 @@
     <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="conatiner" *ngIf="!showAD">
             <div class="card">
-                <app-home-search-here [fields]="searchFields"></app-home-search-here>
+                <app-home-search-here [fields]="searchFields" [services]="services"></app-home-search-here>
                 <div class="container text-right">
                     <button mat-button class="search_btn" (click)="search()">Search</button>
                 </div>

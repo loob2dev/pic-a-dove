@@ -1,0 +1,417 @@
+.avatar{
+    width: 185px;
+    height: 220px;
+    border: 2px solid #fb99ae;
+    border-radius: 5px;
+    position: relative;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.upload_btn{
+    margin: 20px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 200px;
+    height: 40px;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+}
+.upload_btn:hover{
+    color: #fff;
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.upload_notify{
+    color: red;
+}
+#upload_input{
+    display: none;
+}
+.verified{
+    background-image: url('../../../assets/img/verified.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    text-align: center;
+    height: 50px;
+    position: absolute;
+    bottom: 28px;
+    right: -35px;
+    left: -33px;
+    color: #fff;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    padding-top: 20px
+}
+.featured{
+    background-image: url('../../../assets/img/featured.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    text-align: center;
+    height: 50px;
+    position: absolute;
+    bottom: -5px;
+    right: -35px;
+    left: -33px;
+    color: #fff;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    padding-top: 20px;
+}
+.chat-container{
+    padding: 7px 29px;
+    background-color: #f1f1f1;
+    border-radius: 36px;
+}
+.nick-name{
+    font-family: 'Myriad Pro_bold';
+    font-size: 13pt;
+    margin: 0;
+}
+.time{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    margin: 0;
+}
+.chat-content{
+    margin-top: 5px;
+    font-family: 'Myriad Pro';
+    font-size: 15pt;
+    margin-bottom: 0;
+}
+.nickname-input{
+    width: 35%;
+    background-color: #f1f1f1;
+}
+.chat-contnet-input{
+    background-color: #f1f1f1;
+    resize: none;
+}
+.submit_btn{
+    margin-top: 50px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 160px;
+    height: 40px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    border-radius: 35px 35px;
+    margin-left: 33px;
+}
+.submit_btn:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.service{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #f84f73;
+    padding: 13px;
+}
+.title{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    color: white;
+}
+::ng-deep.mat-tab-header{
+    background: #ebebeb;
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #f5476c;
+}
+.title-header{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #f84f73;
+    padding: 13px;
+}
+.title{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    color: white;
+}
+.gallery{
+    margin : 20px;
+}
+.img-card{
+    padding-top: 10px;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 255px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.avatar{
+    width: 160px;
+    height: 200px;
+    border: 2px solid #fb99ae;
+    border-radius: 5px;
+    position: relative;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.lock{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+}
+.check{
+    position: absolute;
+    bottom: -15px;
+    left: -3px;
+    color: #fff;
+}
+.review{
+    width: 30px;
+    height: 30px;
+    margin-top: -2px;
+}
+.lock-check{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    float: left;
+}
+.name{
+    text-transform: uppercase;
+    font-family: 'Myriad Pro_bold';
+    font-size: 15pt;
+    margin-top: 20px;
+}
+.status{
+    text-transform: lowercase;
+    font-family: 'Myriad Pro_bold';
+    font-size: 10pt;
+    margin-top: 20px;
+    margin-top: -15px;
+    color: #39c740
+}
+.marker-i{
+    font-size: 30pt;
+    margin-top: 20px;
+    margin-right: 5px;
+    color: #e02027
+}
+.chat-i{
+    font-size: 30pt;
+    margin-top: 44px;
+    margin-right: 5px;
+    color: #0391fd;
+    cursor: pointer;
+}
+.chat-i:hover{
+    color: #0575ca;
+}
+.marker-c{
+    text-transform: lowercase;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    text-transform: capitalize;
+    margin-top: -25px;
+}
+.chat-l{
+    text-transform: lowercase;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    margin-top: 20px;
+    color: #0391fd;
+    margin-top: -5px;
+    cursor: pointer;
+}
+.container-ps{
+    width: 70%;
+}
+.damage-l{
+    text-transform: capitalize;
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    float: left;
+    margin-left: 20px
+
+}
+.damage-c{
+    text-transform: capitalize;
+    font-family: 'Myriad Pro_bold';
+    font-size: 13pt;
+    float: right;
+}
+.contact-info{
+    text-transform: uppercase;
+    font-family: 'Myriad Pro_bold';
+    font-size: 15pt;
+    margin-top: 20px;
+}
+.file-container{
+    width: 100%;
+}
+.phone-i{
+    font-size: 30pt;
+    margin-top: 40px;
+    margin-right: 5px;
+    color: #dd292b;
+    cursor: pointer;
+}
+
+.others-contact{
+    font-family: 'Myriad Pro_bold';
+    font-size: 14pt;    
+    padding: 10px;
+}
+.others-contact-c{
+    margin-left: -30px;
+    margin-top: -25px;
+}
+.othercontact-i{
+    font-size: 25pt;
+    color: #249042;
+    margin: 8px 12px;
+}
+.phone{
+    margin-top: 20px;
+}
+
+.underline{
+    font-size: 10pt;
+    color: #95a1f8;
+    cursor: pointer;
+    border-bottom: 1px solid #95a1f8;
+}
+.underline:hover{
+    color: #249042
+}
+.title-header{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #f84f73;
+    padding: 13px;
+}
+.title{
+    font-family: 'Myriad Pro';
+    font-size: 12pt;
+    color: white;
+}
+.sub-title{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    margin: 10px;
+}
+.service-item{
+    font-family: 'Myriad Pro';
+    font-size: 10pt;
+}
+.about-me{
+    /* font-family: 'Myriad Pro';
+    font-size: 10pt; */
+    margin-left: 15px;
+}
+.title_workhours{
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    margin-top: 20px;
+}
+.to{
+    font-family: 'Myriad Pro_bold';
+    font-size: 11pt;
+    margin: 0px 20px;
+}
+.day{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    margin: 0px 5px;
+    width: 25px
+}
+.type{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    width: 15px
+}
+.hour{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    margin: 0px 2px 0px 5px;
+    width: 15px
+}
+.edit_container{
+    padding: 40px 30px;
+}
+.save_btn{
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 160px;
+    height: 40px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    border-radius: 35px 35px;
+    margin-left: 33px;
+}
+.save_btn:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}
+
+.to{
+    font-family: 'Myriad Pro_bold';
+    font-size: 11pt;
+    margin: 0px 13px;
+}
+.time{
+    font-family: 'Myriad Pro';
+    font-size: 11pt;
+    margin: 0px 2px;
+}
+/* comments */
+.avatar_cmt{
+    width: 32px;
+    height: 32px ;
+}
+.chat-container_cmt{
+    padding: 7px 29px;
+    background-color: #ffffff;
+    border-radius: 36px;
+    width: fit-content;
+}
+.nick-name_cmt{
+    font-family: 'Myriad Pro_bold';
+    font-size: 10pt;
+    margin: 0;
+}
+.time_cmt{
+    font-family: 'Myriad Pro';
+    font-size: 9pt;
+    margin: 0;
+}
+.chat-content_cmt{
+    margin: 0
+}
+.nickname-input_cmt{
+    width: 35%;
+    background-color: #f1f1f1;
+}
+.chat-contnet-input_cmt{
+    background-color: #f1f1f1;
+    resize: none;
+}
+.submit_btn_cmt{
+    margin-top: 50px;
+    color: #fff;
+    background-color: #f84f73;
+    border-color: #f84f73;
+    width: 160px;
+    height: 40px;
+    font-family: 'Myriad Pro_bold';
+    font-size: 12pt;
+    border-radius: 35px 35px;
+    margin-left: 33px;
+}
+.submit_btn_cmt:hover{
+    background-color: #c74964;
+    border-color: #c74964;
+}
+.replies_cmt{
+    margin-left: 50px;
+}

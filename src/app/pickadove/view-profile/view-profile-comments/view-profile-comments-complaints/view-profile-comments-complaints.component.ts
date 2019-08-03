@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DataExchangeService } from 'src/app/service/data-exchange.service';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/service/users.service';
+import { Router } from '@angular/router';
 
 declare var $:any;
 
@@ -15,13 +19,34 @@ export class ViewProfileCommentsComplaintsComponent implements OnInit {
 
   comments : any = [];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private exchangeService: DataExchangeService,
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private userService: UsersService,
+    private router: Router) { }
 
-  ngOnInit() {
+    ngOnInit() {
     this.submitForm = this.formBuilder.group({
-      nickName: ['', [Validators.required, Validators.required]],
-      content: [''],
+    nickName: ['', [Validators.required, Validators.required]],
+    content: [''],
     });
+
+    //call api
+    // this.exchangeService.setLoading(true);
+    this.userService.getComments(localStorage.getItem('user_id'), localStorage.getItem('token'), localStorage.getItem('user_id'), 1,  (res)=>{
+      if (res.success == 1){
+      this.comments = res.data;
+      console.log(this.comments)
+      } else if(res.success == 0){
+      this.toastr.error(res.message);
+      } else if(res.success == -1){
+      this.toastr.error(res.message);
+      this.router.navigate['sign']
+      }
+      setTimeout (() => {
+      // this.exchangeService.setLoading(false);
+      }, 1000);
+    })  
   }
 
   get f() { 

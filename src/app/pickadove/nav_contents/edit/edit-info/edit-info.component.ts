@@ -30,12 +30,18 @@ export class EditInfoComponent implements OnInit {
   constructor(private dataExhane: DataExchangeService) { }
 
   ngOnInit() {}
+  
   changeValue(event){
     this.fields[event.index].selected = event.val;
     this.fields[event.index].error = false;
   }
+
   changeOtherValue(event){
     this.userinfo[event.index] = event.val;
     this.userinfo[event.index + "_error"] = false;
+  }
+
+  changeOtherContact(event){
+    event.object.content = event.val;
   }
 }

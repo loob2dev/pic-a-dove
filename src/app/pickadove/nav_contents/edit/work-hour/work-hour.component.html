@@ -1,7 +1,7 @@
 <div class="container text-center">
     <p class="title">WORK HOURS</p>
         
-    <div class="d-flex justify-content-center frame" *ngFor="let schedule of workSchedule" [attr.id]="schedule.id_workhours">
+    <div class="d-flex justify-content-center frame" *ngFor="let schedule of workSchedule" [attr.id]="schedule.id_workhours" [@FadeAnimation]="'in'">
         <mat-select class="day_week" [(value)]="schedule.w_day" >
             <mat-option *ngFor="let day of schedule.week" [value]="day.id">{{day.name}}</mat-option>
         </mat-select>

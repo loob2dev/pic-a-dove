@@ -33,17 +33,14 @@
         <p class="damage-c">{{userinfo.contact_mobile}}</p>
     </div>
     <div class="container-ps">
+        <p class="pull-left"><i class="fa fa-whatsapp othercontact-i"></i>{{userinfo.contact_whatsapp}}</p>
+        <p class="pull-right"><i class="fa fa-weixin othercontact-i"></i>{{userinfo.contact_wechat}}</p>
+    </div>
+    <div class="container-ps">
         <p class="others-contact">OTHERS CONTACTS</p>
-        <div class="row others-contact-c">
-            <div class="col-md-6 d-flex justify-content-center">
-                <!-- <div class="whatsapp"></div> -->
-                <i class="fa fa-whatsapp othercontact-i"></i>
-                <p class="phone">{{userinfo.contact_whatsapp}}</p>
-            </div>
-            <div class="col-md-6 d-flex justify-content-center">
-                <!-- <div class="wechat"></div> -->
-                <i class="fa fa-weixin othercontact-i"></i>
-                <p class="phone">{{userinfo.contact_wechat}}</p>
+        <div class="row others-contact-c m-2">
+            <div class="col-md-6" *ngFor="let contact of userinfo.otherContacts">
+                <p><img height="40px" [ngStyle]="{'background-image': 'url(' + 'http://192.168.1.140:4000/' + contact.icon + ')'}"><span class="phone">{{contact.content}}</span></p>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { UsersService } from 'src/app/service/users.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 interface Schedule{
   isPmFrom: string,
@@ -25,15 +26,17 @@ export class PreviewWorkHourComponent implements OnInit {
 
   workHours: Array<Schedule> = [];
 
-  constructor(private exchangeService: DataExchangeService, private userService: UsersService, private toastr: ToastrService) { }
+  constructor(private exchangeService: DataExchangeService, private userService: UsersService, private router: Router) { }
 
   ngOnInit() {
     setTimeout (() => {
       this.exchangeService.setLoading(true);
      }, 100);
     this.userService.getWorkHours(localStorage.getItem('user_id'), localStorage.getItem('token'), (hours) => {
-      if(!hours.success){
+      if(hours.success == 0){
         return
+      } else if(hours.success == -1){
+        this.router.navigate['sign']
       }
       hours.data.forEach((element : Schedule) => {
         var schedule={

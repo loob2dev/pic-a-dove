@@ -1,0 +1,109 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <mat-card *ngIf="editField" [@FadeAnimation]="'in'">
+            <mat-card-content>
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title mt-0">Checkbox configuration</h4>
+                </div>
+                <div class="row p-5">
+                    <div class="col-md-4">
+                        <mat-form-field>
+                            <input matInput placeholder="Name" [(ngModel)]="label_name" (input)="onlabelChange($event.target.value)">
+                        </mat-form-field>
+                        <mat-error *ngIf="label_error">
+                            Name is <strong>required</strong>
+                        </mat-error>
+                    </div>
+                    <section class="field-section col-md-4">
+                        <label class="radio-margin">Type:</label>
+                        <mat-radio-group  [(ngModel)]="editItems">
+                            <mat-radio-button class="radio-margin">TextEntry</mat-radio-button>
+                            <mat-radio-button class="radio-margin" value="checked">Dropdown</mat-radio-button>
+                        </mat-radio-group>
+                    </section>
+                    <mat-checkbox class="col-md-4 field-section" [(ngModel)]="isRequired">Is Required</mat-checkbox>
+                    <div class="container p-5" [@FadeAnimation]="'in'" *ngIf="editItems">
+                        <h5>Please add new item</h5>
+                        <div *ngFor="let field_item of field_items" class="m-3">
+                            <mat-form-field class="field_item" [@FadeAnimation]="'in'">
+                                <input matInput [(ngModel)]="field_item.value" placeholder="Dropdown item" (input)="onItemChange({value: $event.target.value, object: field_item})">
+                            </mat-form-field>
+                            <mat-error *ngIf="field_item.error">
+                                Item is <strong>required</strong>
+                            </mat-error>
+                        </div>
+                        <div class="field_item">
+                            <button mat-raised-button type="button" matTooltip="add" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon pull-right" (click)="addField()">
+                                <i class="material-icons">add_circle</i>
+                            </button>
+                            <button mat-raised-button type="button" *ngIf="field_items.length > 1" matTooltip="remove" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon pull-right" (click)="removeField()">
+                                <i class="material-icons">remove_circle</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <button mat-raised-button class="btn btn-success pull-right" (click)="saveEdit()">Save</button>
+                        <button mat-raised-button class="btn pull-right" (click)="cancelEdit()">Cancel</button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <div class="card card-plain">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title mt-0">Admin Fields</h4>
+                <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <button *ngIf="!editField" mat-raised-button class="btn btn-success pull-left" (click)="addNewField()">Add New Field</button>
+                    <table class="table table-hover">
+                      <thead class=" text-primary">
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Is Required
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                      </thead>
+                      <tbody>
+                            <tr *ngFor="let field of adminFields; let i = index">
+                                <td>
+                                    {{i}}
+                                </td>
+                                <td>
+                                    {{field.label}}
+                                </td>
+                                <td>
+                                    <button mat-button *ngIf="!field.field_type">TextEntry</button>
+                                    <div *ngIf="field.field_type">
+                                        <button mat-button [matMenuTriggerFor]="menu">Dropdown<i class="material-icons">arrow_drop_down</i></button>
+                                        <mat-menu #menu="matMenu">
+                                            <p mat-menu-item *ngFor="let item of field.combo">{{item.content}}</p>
+                                        </mat-menu>
+                                    </div>                                    
+                                </td>
+                                <td>
+                                    <i *ngIf="field.isrequired" class="material-icons">check</i>
+                                </td>
+                                <td class="center">
+                                    <button mat-raised-button type="button" matTooltip="Delete" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="deleteAdminField(field.id_admin)">
+                                        <i class="material-icons">delete</i>
+                                    </button>
+                                </td>
+                            </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

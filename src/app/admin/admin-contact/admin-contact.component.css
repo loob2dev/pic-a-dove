@@ -1,0 +1,47 @@
+.example-h2 {
+    margin: 10px;
+}
+
+.field-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: 100%
+}
+
+.radio-margin {
+    margin: 0 10px;
+}
+
+mat-radio-group{
+    margin-top: 10px;
+}
+
+mat-checkbox{
+    margin-top: 10px;
+}
+
+.field_item{
+    width: 30%;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #f7a5b6 !important;
+ }
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: #f7a5b6 !important;
+}
+.file_input{
+    display: none;
+}
+
+.img-upload{
+    margin-top: 33px;
+}
+
+.icon{
+    height: 50px;
+}

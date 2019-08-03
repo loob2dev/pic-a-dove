@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/service/users.service';
+import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 interface SearchField{
   state: string
@@ -57,6 +59,12 @@ interface recentProfile{
   user_id: number
 }
 
+interface Service{
+  id_services: number
+  label: string
+  value: boolean
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -81,8 +89,9 @@ export class HomeComponent implements OnInit {
   searchResult: SearchResult;
   profilesResult: Array<Profile>
   historyResult : Array<recentProfile>
+  services: Array<Service> = [];
 
-  constructor(private exchangeService: DataExchangeService, private toastr: ToastrService, private userService: UsersService) { }
+  constructor(private exchangeService: DataExchangeService, private toastr: ToastrService, private userService: UsersService,  private router: Router) { }
 
   ngOnInit() {
     this.exchangeService.viewProfileOpenObserver.subscribe(id => {
@@ -108,6 +117,15 @@ export class HomeComponent implements OnInit {
         $(window).scrollTop(0);
       }      
     })
+
+    this.userService.getGirlsService(localStorage.getItem('user_id'), localStorage.getItem('token'), (services)=> {
+      if(services.success == 1){
+        this.services = services.data;
+      } else if(services.success == -1){
+        this.router.navigate['sign']
+      }
+    })
+
   }
 
   search(){
@@ -118,11 +136,20 @@ export class HomeComponent implements OnInit {
     this.searchFields.state = this.state;
 
     var infor = this.searchFields;
+
+    var services = [];
+
+    this.services.forEach((element : Service) => {
+      if(element.value){
+        services.push(element.id_services);
+      }
+    })
+
     setTimeout (() => {
       this.exchangeService.setLoading(true);
     }, 100);
-    this.userService.getTopProfile(localStorage.getItem('user_id'), localStorage.getItem('token'), infor.state, infor.name, infor.ageFrom, infor.ageTo, infor.heightFrom, infor.heightTo, infor.location, (resTopProfile)=>{
-      if(resTopProfile.success){
+    this.userService.getTopProfile(localStorage.getItem('user_id'), localStorage.getItem('token'), infor.state, infor.name, infor.ageFrom, infor.ageTo, infor.heightFrom, infor.heightTo, infor.location, services, (resTopProfile)=>{
+      if(resTopProfile.success == 1){
         this.searchResult = resTopProfile.data;
         try {
           var phone_hidden_number = this.searchResult.contact_mobile.substring(0, 3) + "XXXX"; 
@@ -130,37 +157,42 @@ export class HomeComponent implements OnInit {
         } catch (error) {
           
         }
-        this.userService.getProfileList(localStorage.getItem('user_id'), localStorage.getItem('token'), infor.state, infor.name, infor.ageFrom, infor.ageTo, infor.heightFrom, infor.heightTo, infor.location, (resProfiles)=>{
-          if(resProfiles.success){
+        this.userService.getProfileList(localStorage.getItem('user_id'), localStorage.getItem('token'), infor.state, infor.name, infor.ageFrom, infor.ageTo, infor.heightFrom, infor.heightTo, infor.location, services, (resProfiles)=>{
+          if(resProfiles.success == 1){
             this.profilesResult = resProfiles.data;
             this.userService.getHistoryList(localStorage.getItem('user_id'), localStorage.getItem('token'), (resHistory)=>{
-              if(resHistory.success){
+              if(resHistory.success == 1){
                 setTimeout (() => {
                   this.exchangeService.setLoading(false);
                 }, 1000);
                 this.historyResult = resHistory.data;
-              }
-              else{
+              } else if (resHistory.success == 0){
                 this.toastr.error(resProfiles.message);
+              } else if (resHistory.success == -1){
+                this.router.navigate['sign']
               }
             })
-          }
-          else{
+          } else if (resProfiles.success == 0){
             this.toastr.error(resProfiles.message);
+          } else if (resProfiles.success == -1){
+            this.router.navigate['sign']
           }
         })
       }
-      else{
+      else if (resTopProfile.success == 0){
         this.toastr.error(resTopProfile.message);
+      }
+      else if (resTopProfile.success == -1){
+        this.router.navigate['sign']
       }
     })
   }
   initRecent(){
     this.userService.getHistoryList(localStorage.getItem('user_id'), localStorage.getItem('token'), (resHistory)=>{
-      if(resHistory.success){
+      if(resHistory.success == 1){
         this.historyResult = resHistory.data;
-      }
-      else{
+      } else if(resHistory.success == -1){
+        this.router.navigate['sign']
       }
     })
   }

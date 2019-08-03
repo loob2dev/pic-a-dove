@@ -44,6 +44,7 @@
     position: relative;
     background-size: 100%;
     background-repeat: no-repeat;
+    background-position: center;
     margin: auto;
 }
 .lock{
@@ -72,7 +73,6 @@
     font-size: 12pt;
     color: #ff0101;
     float: right;
-    margin-right: 30px;
     cursor: pointer;
 }
 .delete-btn:hover{
@@ -80,4 +80,7 @@
 }
 .gallery-item{
     margin-top: 30px;
+}
+.inputFile{
+    display: none;
 }

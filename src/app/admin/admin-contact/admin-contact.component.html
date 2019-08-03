@@ -1,0 +1,78 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <mat-card *ngIf="editField" [@FadeAnimation]="'in'">
+                <mat-card-content>
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0">Checkbox configuration</h4>
+                    </div>
+                    <div class="p-5 row">
+                        <div class="container col-md-4 img-upload">
+                            <input #file type="file" accept='image/*' (change)="preview(file.files)" class="file_input"/>
+                            <button mat-raised-button type="button" matTooltip="Add Image" [matTooltipPosition]="'above'" (click)="addImage()" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">add_a_photo</i>
+                            </button>
+                            <img [src]="imgURL" height="40" *ngIf="imgURL" (change)="onChangeImage()">
+                            <span style="color:red;" *ngIf="message">{{message}}</span>
+                        </div>
+                        <div class="m-4 col-md-4">
+                            <mat-form-field>
+                                <input matInput placeholder="Name" [(ngModel)]="label_name" (input)="onlabelChange($event.target.value)">
+                            </mat-form-field>
+                            <mat-error *ngIf="label_error">
+                                Name is <strong>required</strong>
+                            </mat-error>
+                        </div>
+                        <div class="container">
+                            <button mat-raised-button class="btn btn-success pull-right" (click)="saveEdit()">Save</button>
+                            <button mat-raised-button class="btn pull-right" (click)="cancelEdit()">Cancel</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <div class="card card-plain">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title mt-0">Admin Fields</h4>
+                    <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <button *ngIf="!editField" mat-raised-button class="btn btn-success pull-left" (click)="addNewField()">Add New Field</button>
+                        <table class="table table-hover">
+                          <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                          </thead>
+                          <tbody>
+                                <tr *ngFor="let contact of otherContacts; let ID = index">
+                                    <td>
+                                        {{ID}}
+                                    </td>
+                                    <td>
+                                        <img class="icon" [src]="'http://192.168.1.140:4000/' + contact.icon">
+                                    </td>
+                                    <td>
+                                        {{contact.label}}
+                                    </td>
+                                    <td class="center">
+                                          <button mat-raised-button type="button" matTooltip="Delete" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="deleteAdminContact(contact.id_othercontact)">
+                                              <i class="material-icons">delete</i>
+                                          </button>
+                                    </td>
+                                </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

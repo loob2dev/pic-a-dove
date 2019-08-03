@@ -1,10 +1,18 @@
 <div class="container">
-    <div class="row conatainer p-5" *ngFor="let comment of comments">
-        <img class="col-md-1 avatar" src="../../../../../../assets/img/persion.png">
-        <div class="col-md-8 chat-container">
-            <p class="nick-name">{{comment.nickName}}</p>
-            <p class="time">10-05-19 05:30PM</p>
-            <p class="chat-content">{{comment.content}}</p>
+    <div class="p-3" *ngFor="let comment of comments">
+        <img class="avatar" src="../../../../../../assets/img/persion.png">
+        <div class="chat-container">
+            <p class="nick-name">{{comment.firstname + comment.lastname}}</p>
+            <p class="time">{{comment.created_at | date: 'dd/MM/yyyy'}}</p>
+            <p class="chat-content">{{comment.comment}}</p>
+        </div>
+        <div class="p-3 replies" *ngFor="let comment_reply of comment.replies">
+            <img class="avatar" src="../../../../../../assets/img/persion.png">
+            <div class="chat-container">
+                <p class="nick-name">{{comment_reply.firstname + comment_reply.lastname}}</p>
+                <p class="time">{{comment_reply.created_at | date: 'dd/MM/yyyy'}}</p>
+                <p class="chat-content">{{comment_reply.comment}}</p>
+            </div>
         </div>
     </div>
     <div class="row conatainer p-5">

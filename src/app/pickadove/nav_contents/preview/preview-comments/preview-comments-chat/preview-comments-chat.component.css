@@ -6,22 +6,20 @@
     padding: 7px 29px;
     background-color: #f1f1f1;
     border-radius: 36px;
+    width: fit-content;
 }
 .nick-name{
     font-family: 'Myriad Pro_bold';
-    font-size: 13pt;
+    font-size: 10pt;
     margin: 0;
 }
 .time{
     font-family: 'Myriad Pro';
-    font-size: 12pt;
+    font-size: 9pt;
     margin: 0;
 }
 .chat-content{
-    margin-top: 5px;
-    font-family: 'Myriad Pro';
-    font-size: 15pt;
-    margin-bottom: 0;
+    margin: 0
 }
 .nickname-input{
     width: 35%;
@@ -46,4 +44,7 @@
 .submit_btn:hover{
     background-color: #c74964;
     border-color: #c74964;
+}
+.replies{
+    margin-left: 50px;
 }

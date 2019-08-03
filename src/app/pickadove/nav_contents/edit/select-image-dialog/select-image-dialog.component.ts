@@ -61,18 +61,26 @@ export class SelectImageDialogComponent implements OnInit {
 
     this.userService.uploadProfileImage(localStorage.getItem('user_id'), localStorage.getItem('token'), this.file, this.imgcode, (res)=>{
       if(res.success == 1){
-        this.toastr.success(res.message); 
-        this.exchangeService.changeThumbnail(true);
-        this.exchangeService.closedUploadDlg(true);
+        this.userService.updateImageCode(localStorage.getItem('user_id'), localStorage.getItem('token'), this.imgcode, (res)=>{
+          if(res.success == 1){
+            this.toastr.success(res.message); 
+            this.exchangeService.changeThumbnail(true);
+            this.exchangeService.closedUploadDlg(true);
+          }else if(res.success == -1){
+            this.router.navigate['sign']
+          }else{
+            this.toastr.error(res.message);
+          }
+          setTimeout (() => {
+            this.exchangeService.setLoading(false);
+          }, 1000);
+        })
       }else if(res.success == -1){
         this.router.navigate['sign']
       }else{
         this.toastr.error(res.message);
       }
-      setTimeout (() => {
-        this.exchangeService.setLoading(false);
-      }, 1000);
-    })
+    })   
   }
 
   // cancel(){

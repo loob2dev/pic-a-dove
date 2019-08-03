@@ -3,6 +3,7 @@ import { DataExchangeService } from 'src/app/service/data-exchange.service';
 import { UsersService } from 'src/app/service/users.service';
 import { ToastrService } from 'ngx-toastr';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 interface User{
   adminFields: Array<Field>,
@@ -60,19 +61,21 @@ export class PreviewPersionalInfoComponent implements OnInit {
 
   userinfo: User;
 
-  constructor(private exchangeService: DataExchangeService, private userService: UsersService, private toastr: ToastrService) { }
+  constructor(private exchangeService: DataExchangeService, private userService: UsersService, private toastr: ToastrService,  private router: Router) { }
 
   ngOnInit() {
     setTimeout (() => {
       this.exchangeService.setLoading(true);
      }, 100);
      this.userService.getMyProfileDetails(localStorage.getItem('user_id'), localStorage.getItem('token'), (details)=> {
-      if(details.success){
+      if(details.success == 1){
         this.userinfo = details.data;
         this.exchangeService.InitUsername(this.userinfo.firstname + " " + this.userinfo.lastname);
         setTimeout (() => {
           this.exchangeService.setLoading(false);
       }, 1000);
+      } else if(details.success == -1){
+        this.router.navigate['sign']
       }
     });
      

@@ -38,7 +38,7 @@ interface Schedule {
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
 
@@ -67,8 +67,11 @@ export class EditComponent implements OnInit {
     setTimeout (() => {
       this.exchangeService.setLoading(true);
      }, 100);
-    this,this.userService.getWorkHours(localStorage.getItem('user_id'), localStorage.getItem('token'), (hours) => {
-      if(!hours.success){
+    this.userService.getWorkHours(localStorage.getItem('user_id'), localStorage.getItem('token'), (hours) => {
+      if(hours.success == 0){
+        return
+      } else if (hours.success == -1){
+        this.router.navigate['sign']
         return
       }
 
@@ -113,16 +116,26 @@ export class EditComponent implements OnInit {
 
       
       this.userService.getAdminFields(localStorage.getItem('user_id'), localStorage.getItem('token'), (adminfields)=> {
-        if(!adminfields.success){
+        if(adminfields.success == 0){
+          return;
+        } else if(adminfields.success == -1){
+          this.router.navigate['sign']
           return;
         }
         this.userService.getMyProfileDetails(localStorage.getItem('user_id'), localStorage.getItem('token'), (details)=> {
-          if(details.success){
+          if(details.success == 1){
             var selected = "";
             this.details = details;
             this.details_data = details.data;
             this.details_data.birthday_error = false;
             this.details_data.height_error = false;
+
+            console.log(this.details_data)
+            this.details_data.galleries.forEach(element => {
+              element.imgurl = 'http://192.168.1.140:4000/' + element.imgurl;
+            });
+
+            console.log(this.details_data)
 
             this.exchangeService.InitUsername(this.details_data.firstname + " " + this.details_data.lastname);
             adminfields.data.forEach((element) => {
@@ -150,6 +163,8 @@ export class EditComponent implements OnInit {
             setTimeout (() => {
               this.exchangeService.setLoading(false);
           }, 1000);
+          } else if(details.success == -1){
+            this.router.navigate['sign']
           }
         });
       })
@@ -198,9 +213,20 @@ export class EditComponent implements OnInit {
       }
       adminFields.push(field);
     });
+
+    var otherContacts = [];
+    this.details_data.otherContacts.forEach(element => {
+      if (element.content != null && element.content != ''){
+        otherContacts.push({
+          id_othercontact: element.id_othercontact,
+          content: element.content
+        })
+      }
+    });
+
     if(errorCount > 0)
       return;
-    this.userService.completeProfile(user_id, token, birthday, height, mobile, wechat, whatsapp, preferred, workhours, adminFields, (res) =>{
+    this.userService.completeProfile(user_id, token, birthday, height, mobile, wechat, whatsapp, preferred, workhours, adminFields, otherContacts, (res) =>{
       if(res.success == 1){
         this.toastr.success(res.message);
         this.exchangeService.refreshEditPage(true);

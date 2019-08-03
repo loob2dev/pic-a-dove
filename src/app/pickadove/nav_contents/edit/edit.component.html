@@ -10,11 +10,11 @@
     <div class="container text-right">
         <button mat-button class="save_btn" (click)="completeProfile()">Save</button>
     </div>
-    <app-service-selection class=container></app-service-selection>
-    <app-about-me class=container></app-about-me>
+    <app-service-selection class="container"></app-service-selection>
+    <app-about-me class="container"></app-about-me>
     <div class="d-flex justify-content-between container">
         <button mat-button class="save_btn">Add Video</button>
         <button mat-button class="save_btn">Save</button>
     </div>
-    <app-photo-gallery class=container></app-photo-gallery>
+    <app-photo-gallery class="container" [galleries]="details_data.galleries"></app-photo-gallery>
 </div>
