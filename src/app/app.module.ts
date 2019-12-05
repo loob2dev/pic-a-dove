@@ -191,7 +191,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatCarouselModule,
     SwiperModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCU3muwvFK7AveAzw5B8cXSj5yGBp250y4',
+      apiKey: 'GoogleMap API KEY',
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule.forRoot(),

@@ -53,7 +53,7 @@ import { EditAdvertiserComponents } from '../../edit-advertisers/edit-advertiser
     MatSelectModule,
     MatTooltipModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCU3muwvFK7AveAzw5B8cXSj5yGBp250y4',
+      apiKey: 'GoogleMap API KEY',
       libraries: ['places']
     }),
     MatGoogleMapsAutocompleteModule.forRoot(),
